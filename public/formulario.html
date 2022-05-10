@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="/src/img/favicon.png" type="image/icon type">
+  <title>Registro de usuarios</title>
+  <link rel="stylesheet" href="/src/css/style.css"">
+</head>
+
+<body>
+  <section class=" container">
+  <img src="/src/img/favicon.png" alt="llave">
+  <h2>REGISTRO DE USUARIO</h2>
+
+  <form onsubmit="event.preventDefault(); myFunction()">
+    <label for="nombre"><b>Usuario</b></label><br>
+    <input type="text" id="usuario" name="nombre" required><br>
+    <label for="email"><b>E-mail</b></label><br>
+    <input type="email" id="email" name="email" required><br>
+    <br>
+    <label for="password"><b>Contraseña</b></label><br>
+    <input type="password" id="password" name="password" required><br>
+    <br>
+    <label for="password2"><b>Repetir contraseña</b></label><br>
+    <input type="password" id="password2" name="password2" required><br>
+    <input type="submit" value="Registrarse">
+  </form>
+  <p id="message" class="alert"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2022</p>
+  </footer>
+  <script src="/src/js/script.js"></script>
+  </body>
+
+</html>
