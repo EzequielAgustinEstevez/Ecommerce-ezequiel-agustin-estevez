@@ -16,16 +16,17 @@ import PetsIcon from '@mui/icons-material/Pets';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 
-const pages = ['Nuestra fabrica', 'Quienes somos?'];
+import CartWidget from './CartWidget';
+
+const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
 const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
-const settings = ['Perfil', 'Cuenta', 'Menu', 'Salir'];
+const settings = ['Avatar', 'Direccion', 'Historial', 'Cerrar Sesion'];
 
 const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -114,12 +115,11 @@ const NavBar = () => {
 						component="a"
 						href=""
 						sx={{
-							mr: 2,
 							display: { xs: 'flex', md: 'none' },
 							flexGrow: 1,
 							fontFamily: 'monospace',
 							fontWeight: 700,
-							letterSpacing: '.3rem',
+							letterSpacing: { xs: '0', sm: '.3rem' },
 							color: 'inherit',
 							textDecoration: 'none',
 						}}>
@@ -132,11 +132,18 @@ const NavBar = () => {
 								{open ? <ExpandLess /> : <ExpandMore />}
 							</ListItemButton>
 							<Collapse in={!open} timeout="auto" unmountOnExit>
-								<List component="div" disablePadding>
+								<List
+									component="div"
+									disablePadding
+									sx={{
+										position: 'absolute',
+										background: '#1976d2',
+										boxShadow: '10px 10px 10px rgba(0,0,0,0.1)',
+									}}>
 									{subpages.map((subpage) => (
-										<ListItemButton sx={{ pl: 4 }}>
+										<ListItemButton key={subpage} sx={{ pl: 4 }}>
 											<ListItemIcon>
-												<StarBorder />
+												<StarBorder sx={{ color: '#ffff' }} />
 											</ListItemIcon>
 											<ListItemText primary={subpage} />
 										</ListItemButton>
@@ -153,13 +160,16 @@ const NavBar = () => {
 							</Button>
 						))}
 					</Box>
-
 					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
+						<CartWidget />
+					</Box>
+					<Box sx={{ flexGrow: 0 }}>
+						<Tooltip title="Opciones">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
 								<Avatar
 									alt="Ezequiel Estevez"
-									src="/static/images/avatar/1.jpg"
+									src="https://ezequielestevez.com/assets/images/EzequielEstevez-Perfil-b.webp"
+									sx={{ background: '#fff', border: '3px solid #9c27b0' }}
 								/>
 							</IconButton>
 						</Tooltip>
@@ -179,7 +189,10 @@ const NavBar = () => {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}>
 							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
+								<MenuItem
+									key={setting}
+									onClick={handleCloseUserMenu}
+									sx={{ p: '0.3em 2em' }}>
 									<Typography textAlign="center">{setting}</Typography>
 								</MenuItem>
 							))}
