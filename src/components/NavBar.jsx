@@ -13,12 +13,24 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import PetsIcon from '@mui/icons-material/Pets';
 
-const pages = ['Productos', 'Nuestra fabrica', 'Quienes somos?'];
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import ListItemText from '@mui/material/ListItemText';
+import Collapse from '@mui/material/Collapse';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import StarBorder from '@mui/icons-material/StarBorder';
+
+const pages = ['Nuestra fabrica', 'Quienes somos?'];
+const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
 const settings = ['Perfil', 'Cuenta', 'Menu', 'Salir'];
 
 const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const [open, setOpen] = React.useState(true);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -33,6 +45,10 @@ const NavBar = () => {
 
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
+	};
+
+	const handleClick = () => {
+		setOpen(!open);
 	};
 
 	return (
@@ -107,9 +123,27 @@ const NavBar = () => {
 							color: 'inherit',
 							textDecoration: 'none',
 						}}>
-						LOGO
+						Cat Clothings
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+						<List component="nav" aria-labelledby="nested-list-subheader">
+							<ListItemButton onClick={handleClick}>
+								<ListItemText primary="Productos" />
+								{open ? <ExpandLess /> : <ExpandMore />}
+							</ListItemButton>
+							<Collapse in={!open} timeout="auto" unmountOnExit>
+								<List component="div" disablePadding>
+									{subpages.map((subpage) => (
+										<ListItemButton sx={{ pl: 4 }}>
+											<ListItemIcon>
+												<StarBorder />
+											</ListItemIcon>
+											<ListItemText primary={subpage} />
+										</ListItemButton>
+									))}
+								</List>
+							</Collapse>
+						</List>
 						{pages.map((page) => (
 							<Button
 								key={page}
