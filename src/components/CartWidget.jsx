@@ -14,11 +14,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 	},
 }));
 
-export default function CustomizedBadges() {
+export default function CustomizedBadges(suma) {
 	const [contador, setContador] = useState(2);
 	function masUno() {
 		setContador(contador + 1);
 	}
+
 	return (
 		<Tooltip title="Tu Carrito">
 			<IconButton
