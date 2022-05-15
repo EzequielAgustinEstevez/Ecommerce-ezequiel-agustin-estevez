@@ -9,7 +9,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 
-export default function MediaCard(props) {
+export default function Item(props) {
 	const [itemCount, setItemCount] = useState(props.initial);
 	function Sumador() {
 		setItemCount(itemCount + 1);
@@ -30,8 +30,8 @@ export default function MediaCard(props) {
 					{props.itemTitle}
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					Lizards are a widespread group of squamate reptiles, with over 6,000
-					species, ranging across all continents except Antarctica
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+					magnam tempore nihil minima porro in voluptatem eligendi adipisci.
 				</Typography>
 			</CardContent>
 			<CardActions sx={{ justifyContent: 'space-between' }}>
