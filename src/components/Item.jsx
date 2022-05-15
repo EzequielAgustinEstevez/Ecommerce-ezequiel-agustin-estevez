@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
-
 export default function Item(props) {
 	const [itemCount, setItemCount] = useState(props.initial);
 	function Sumador() {
@@ -50,6 +49,7 @@ export default function Item(props) {
 					<Button
 						onClick={() => {
 							props.onAdd(itemCount, props.itemTitle);
+							//TODO al hacer click modificaria el contador en Context
 							setItemCount(0);
 						}}
 						disabled={itemCount === 0}
