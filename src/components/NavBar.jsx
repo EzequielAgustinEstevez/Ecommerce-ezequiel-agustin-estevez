@@ -137,7 +137,7 @@ const NavBar = () => {
 									disablePadding
 									sx={{
 										position: 'absolute',
-										background: '#1976d2',
+										background: '#3f8db5',
 										boxShadow: '10px 10px 10px rgba(0,0,0,0.1)',
 									}}>
 									{subpages.map((subpage) => (

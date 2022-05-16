@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Tooltip } from '@mui/material';
-import ItemCounter from './ItemCounter';
+import { NavContext } from '../context/ItemCounter';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
 	'& .MuiBadge-badge': {
@@ -15,20 +15,14 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 	},
 }));
 
-export default function CustomizedBadges(suma) {
-	/* const [contador, setContador] = useState(2);
-	function masUno() {
-		setContador(contador + 1);
-	} */
-
+export default function CustomizedBadges() {
+	const { itemCarrito } = React.useContext(NavContext);
 	return (
 		<Tooltip title="Tu Carrito">
 			<IconButton
 				aria-label="cart"
-				sx={{ margin: { xs: '0', sm: '0 0.8rem' } }}
-				/* onClick={masUno} */
-			>
-				<StyledBadge badgeContent={<ItemCounter />} color="secondary">
+				sx={{ margin: { xs: '0', sm: '0 0.8rem' } }}>
+				<StyledBadge badgeContent={itemCarrito} color="secondary">
 					<ShoppingCartIcon sx={{ color: '#fff' }} />
 				</StyledBadge>
 			</IconButton>
