@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { ItemList } from './ItemList';
+// import { SearchContext } from '../context/SearchProduct';
 
 const ItemListContainer = () => {
+	// const { searchedProducts } = React.useContext(SearchContext);
 	const [loading, setLoading] = React.useState(true);
 	const [error, setError] = React.useState(false);
 	const [products, setProducts] = React.useState([]);

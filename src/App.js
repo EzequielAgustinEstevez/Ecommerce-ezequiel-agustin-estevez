@@ -3,6 +3,7 @@ import { NavBar } from './components/NavBar';
 import { ItemListContainer } from './components/ItemListContainer';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ItemCounter } from './context/ItemCounter';
+// import { searchedProducts } from './context/SearchProduct';
 
 const theme = createTheme({
 	palette: {
@@ -23,8 +24,10 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<ItemCounter>
+				{/* <searchedProducts> */}
 				<NavBar />
 				<ItemListContainer />
+				{/* </searchedProducts> */}
 			</ItemCounter>
 		</ThemeProvider>
 	);
