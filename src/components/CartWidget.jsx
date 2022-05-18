@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Tooltip } from '@mui/material';
-import { NavContext } from '../context/ItemCounter';
+import { GeneralContext } from '../context/GeneralContext';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
 	'& .MuiBadge-badge': {
@@ -16,7 +16,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function CustomizedBadges() {
-	const { itemCarrito } = React.useContext(NavContext);
+	const { itemCarrito } = React.useContext(GeneralContext);
 	return (
 		<Tooltip title="Tu Carrito">
 			<IconButton

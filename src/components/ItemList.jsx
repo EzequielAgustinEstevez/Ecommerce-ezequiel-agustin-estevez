@@ -3,15 +3,13 @@ import { Grid } from '@mui/material';
 import Item from './Item';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-import { NavContext } from '../context/ItemCounter';
 
 const ItemList = (props) => {
 	//! Contexto
-	const { onAdd } = React.useContext(NavContext);
 
 	return (
 		<>
-			{props.error && <p>Error: {props.error}</p>}
+			{props.error && <h1>Error</h1>}
 			{props.cargando && (
 				<Box sx={{ width: '100%' }}>
 					<LinearProgress />
@@ -32,7 +30,6 @@ const ItemList = (props) => {
 							itemStock={data.stock}
 							initial={data.initial}
 							price={data.price}
-							onAdd={onAdd}
 						/>
 					</Grid>
 				))}
