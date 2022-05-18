@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { ItemList } from './ItemList';
 import { productDb } from '../db/db';
-// import { SearchContext } from '../context/SearchProduct';
+import { GeneralContext } from '../context/GeneralContext';
 
 const ItemListContainer = () => {
-	// const { searchedProducts } = React.useContext(SearchContext);
+	const { searchedProducts } = React.useContext(GeneralContext);
 	const [loading, setLoading] = React.useState(true);
 	const [error, setError] = React.useState(false);
 	const [products, setProducts] = React.useState([]);
@@ -29,7 +29,7 @@ const ItemListContainer = () => {
 		fetchProductos();
 		// eslint-disable-next-line
 	}, []);
-	return <ItemList data={products} error={error} cargando={loading} />;
+	return <ItemList data={searchedProducts} error={error} cargando={loading} />;
 };
 
 export { ItemListContainer };
