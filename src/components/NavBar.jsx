@@ -23,7 +23,6 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 
 import CartWidget from './CartWidget';
-import { GeneralContext } from '../context/GeneralContext';
 import { SearchImput } from './SearchImput';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
@@ -31,7 +30,6 @@ const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
 const settings = ['Avatar', 'Direccion', 'Historial', 'Cerrar Sesion'];
 
 const NavBar = () => {
-	const { setSearchValue } = React.useContext(GeneralContext);
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const [open, setOpen] = React.useState(true);

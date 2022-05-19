@@ -63,9 +63,10 @@ function EcommerceContex(props) {
 		try {
 			const productPromise = await new Promise((resolve) => {
 				setTimeout(() => {
-					resolve(setProducts(product));
+					resolve(product);
 				}, 2000);
 			});
+			setProducts(productPromise);
 			setLoading(false);
 		} catch (error) {
 			setLoading(false);
