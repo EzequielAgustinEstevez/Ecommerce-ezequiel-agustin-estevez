@@ -10,7 +10,7 @@ const ItemList = (props) => {
 	return (
 		<>
 			{props.error && <h1>Error</h1>}
-			{props.cargando && (
+			{props.loading && (
 				<Box sx={{ width: '100%' }}>
 					<LinearProgress />
 				</Box>

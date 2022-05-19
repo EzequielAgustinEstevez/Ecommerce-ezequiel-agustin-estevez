@@ -31,13 +31,10 @@ const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
 const settings = ['Avatar', 'Direccion', 'Historial', 'Cerrar Sesion'];
 
 const NavBar = () => {
-	const { searchValue, setSearchValue } = React.useContext(GeneralContext);
+	const { setSearchValue } = React.useContext(GeneralContext);
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const [open, setOpen] = React.useState(true);
-	const onSearchValueChange = (event) => {
-		setSearchValue(event.target.value);
-	};
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -62,6 +59,7 @@ const NavBar = () => {
 		<AppBar position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
+					{/* LOGO responsive */}
 					<PetsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 					<Typography
 						variant="h6"
@@ -79,7 +77,7 @@ const NavBar = () => {
 						}}>
 						Cat Clothings
 					</Typography>
-
+					{/* MENU RESPONSIVE LOGO */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size="large"
@@ -90,6 +88,7 @@ const NavBar = () => {
 							color="inherit">
 							<MenuIcon />
 						</IconButton>
+						{/* MENU RESPONSIVE DESPLEGABLE */}
 						<Menu
 							id="menu-appbar"
 							anchorEl={anchorElNav}
@@ -114,6 +113,7 @@ const NavBar = () => {
 							))}
 						</Menu>
 					</Box>
+					{/* LOGO  */}
 					<PetsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 					<Typography
 						variant="h5"
@@ -131,7 +131,9 @@ const NavBar = () => {
 						}}>
 						Cat Clothings
 					</Typography>
+					{/* MENU */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+						{/* Productos > desplegables */}
 						<List component="nav" aria-labelledby="nested-list-subheader">
 							<ListItemButton onClick={handleClick}>
 								<ListItemText primary="Productos" />
@@ -157,6 +159,7 @@ const NavBar = () => {
 								</List>
 							</Collapse>
 						</List>
+						{/* MENU ITEMS */}
 						{pages.map((page) => (
 							<Button
 								key={page}
@@ -166,18 +169,13 @@ const NavBar = () => {
 							</Button>
 						))}
 					</Box>
+					{/* BUSCADOR */}
 					<SearchImput />
-					<Box>
-						<input
-							className="TodoSearch"
-							placeholder="Cebolla"
-							value={searchValue}
-							onChange={onSearchValueChange}
-						/>
-					</Box>
+					{/* CARRITO */}
 					<Box sx={{ flexGrow: 0 }}>
 						<CartWidget />
 					</Box>
+					{/* MENU USUARIO */}
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Opciones">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
@@ -188,6 +186,7 @@ const NavBar = () => {
 								/>
 							</IconButton>
 						</Tooltip>
+						{/* MENU USUARIO DESPLEGABLE */}
 						<Menu
 							sx={{ mt: '45px' }}
 							id="menu-appbar"

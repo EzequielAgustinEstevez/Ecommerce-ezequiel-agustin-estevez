@@ -1,9 +1,9 @@
 import React from 'react';
 import { GeneralContext } from '../context/GeneralContext';
-import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Box } from '@mui/system';
+// import { styled, alpha } from '@mui/material/styles';
 
 function SearchImput() {
 	const { searchValue, setSearchValue } = React.useContext(GeneralContext);
@@ -11,7 +11,7 @@ function SearchImput() {
 		setSearchValue(event.target.value);
 	};
 
-	const StyledInputBase = styled(InputBase)(({ theme }) => ({
+	/* const StyledInputBase = styled(InputBase)(({ theme }) => ({
 		color: 'inherit',
 		'& .MuiInputBase-input': {
 			padding: theme.spacing(1, 1, 1, 0),
@@ -53,17 +53,26 @@ function SearchImput() {
 		alignItems: 'center',
 		justifyContent: 'center',
 	}));
+	 */
 	return (
 		<Box
 			sx={{
-				color: 'inherit',
-				backgroundColor: '#fff',
+				display: { xs: 'none', md: 'flex' },
+				alignContent: 'center',
+				justifyContent: 'left',
+				alignItems: 'center',
+				color: '#fff',
+				backgroundColor: '#387ca1',
+				borderRadius: '4px',
+				padding: '0 0.3rem',
 			}}>
-			<SearchIconWrapper>
-				<SearchIcon />
-			</SearchIconWrapper>
+			<SearchIcon />
 
-			<InputBase value={searchValue} onChange={onSearchValueChange} />
+			<InputBase
+				sx={{ color: '#fff' }}
+				value={searchValue}
+				onChange={onSearchValueChange}
+			/>
 		</Box>
 	);
 }

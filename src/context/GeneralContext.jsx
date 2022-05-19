@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-//import { productDb } from '../db/db';
+import React, { useState, useEffect } from 'react';
 const GeneralContext = React.createContext();
+/* DB */
 const product = [
 	{
 		name: 'Pantaloncito',
@@ -35,28 +35,62 @@ const product = [
 		price: '5.000',
 	},
 ];
-function EcommerceContex(props) {
-	const [itemCarrito, setitemCarrito] = useState(0);
 
+function EcommerceContex(props) {
+	/* CONTADOR CARRITO */
+	const [itemCarrito, setitemCarrito] = useState(0);
+	/* BUSCADOR */
 	const [searchValue, setSearchValue] = React.useState('');
+	/* BASE DE DATOS  */
+	const [loading, setLoading] = React.useState(true);
+	const [error, setError] = React.useState(false);
+	const [products, setProducts] = React.useState([]);
+
 	var searchedProducts = [];
+	/* _BUSCADOR */
 	if (!searchValue.length >= 1) {
 		searchedProducts = product;
 	} else {
-		searchedProducts = product.filter((products) => {
-			const productsTitle = products.name.toLowerCase();
+		searchedProducts = product.filter((product) => {
+			const productsTitle = product.name.toLowerCase();
 			const searchTitle = searchValue.toLowerCase();
 			return productsTitle.includes(searchTitle);
 		});
 	}
+
+	/* _BASE DE DATOS  */
+	const fetchProductos = async () => {
+		try {
+			const productPromise = await new Promise((resolve) => {
+				setTimeout(() => {
+					resolve(setProducts(product));
+				}, 2000);
+			});
+			setLoading(false);
+		} catch (error) {
+			setLoading(false);
+			console.log(error);
+			setError(true);
+		}
+	};
+
+	useEffect(() => {
+		fetchProductos();
+		// eslint-disable-next-line
+	}, []);
+
 	return (
 		<GeneralContext.Provider
+			/* ENVIOS */
 			value={{
 				itemCarrito,
 				setitemCarrito,
 				searchValue,
 				setSearchValue,
 				searchedProducts,
+				loading,
+				error,
+				products,
 			}}>
 			{props.children}
 		</GeneralContext.Provider>
