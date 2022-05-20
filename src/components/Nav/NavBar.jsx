@@ -62,22 +62,23 @@ const NavBar = () => {
 				<Toolbar disableGutters>
 					{/* LOGO responsive */}
 					<PetsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="/"
-						sx={{
-							mr: 2,
-							display: { xs: 'none', md: 'flex' },
-							fontFamily: 'monospace',
-							fontWeight: 700,
-							letterSpacing: '.2rem',
-							color: 'inherit',
-							textDecoration: 'none',
-						}}>
-						Cat Clothings
-					</Typography>
+					<Link to="/">
+						<Typography
+							variant="h6"
+							noWrap
+							component="a"
+							sx={{
+								mr: 2,
+								display: { xs: 'none', md: 'flex' },
+								fontFamily: 'monospace',
+								fontWeight: 700,
+								letterSpacing: '.2rem',
+								color: 'inherit',
+								textDecoration: 'none',
+							}}>
+							Cat Clothings
+						</Typography>
+					</Link>
 					{/* MENU RESPONSIVE LOGO */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton

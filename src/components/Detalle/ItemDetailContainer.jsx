@@ -4,11 +4,14 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 import { ItemCount } from '../Listado/ItemCount';
 import { useParams } from 'react-router-dom';
+import CardMedia from '@mui/material/CardMedia';
+import { Container } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 const ItemDetailContainer = (props) => {
-	const { id } = useParams();
+	const { itemId } = useParams();
 	const { error, loading, products } = React.useContext(GeneralContext);
-	const idSearch = products.findIndex((s) => s.id === 'prod1');
+	const idSearch = products.findIndex((s) => s.id === itemId);
 
 	return (
 		<>
@@ -18,16 +21,35 @@ const ItemDetailContainer = (props) => {
 					<LinearProgress />
 				</Box>
 			)}
-			<h1>DetailList {id} </h1>
-			<Box
-				container
-				spacing={1}
-				justifyContent="center"
-				alignItems="center"
-				padding={2}
-				alignContent="center">
-				<ItemCount itemStock={products[idSearch].stock} initial={'1'} />
-			</Box>
+			<Container>
+				<Box display="flex" justifyContent="center" alignItems="center">
+					<h1>{products[idSearch].name}</h1>
+				</Box>
+
+				<CardMedia component="img" image={products[idSearch].image} alt="cat" />
+				<Box
+					container
+					spacing={1}
+					justifyContent="center"
+					alignItems="center"
+					padding={2}
+					alignContent="center">
+					<Typography variant="body2" color="text.secondary">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+						debitis deleniti, quasi nisi aliquid non culpa voluptatum quos iste
+						veniam aperiam quaerat iure ab. Illum animi sequi modi sunt ut
+						quisquams alias autem repellendus quaerat illum voluptatibus, itaque
+						facilis excepturi quia quam iure explicabo cupiditate consequatur
+						dicta temporibus. Quod aspernatur sed nesciunt repellat deleniti
+						ullam fugit recusandae, dicta necessitatibus repellendus vero
+						accusamus nobis magnam quia!
+					</Typography>
+					<ItemCount
+						itemStock={products[idSearch].stock}
+						initial={products[idSearch].initial}
+					/>
+				</Box>
+			</Container>
 		</>
 	);
 };
