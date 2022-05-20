@@ -31,6 +31,7 @@ function App() {
 						<Route path="/" element={<ItemListContainer />} />
 						<Route path="*" element={'RUTA NO EXISTE 404'} />
 						<Route path="/Item/:id" element={<ItemDetailContainer />} />
+						<Route path="/category/:id" element={<ItemListContainer />} />
 					</Routes>
 				</BrowserRouter>
 			</EcommerceContex>

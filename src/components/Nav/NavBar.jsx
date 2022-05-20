@@ -25,6 +25,8 @@ import StarBorder from '@mui/icons-material/StarBorder';
 
 import CartWidget from './CartWidget';
 import { SearchImput } from './SearchImput';
+import { Link } from 'react-router-dom';
+import { Category } from '@mui/icons-material';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
 const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
@@ -114,22 +116,23 @@ const NavBar = () => {
 					</Box>
 					{/* LOGO  */}
 					<PetsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-					<Typography
-						variant="h5"
-						noWrap
-						component="a"
-						href=""
-						sx={{
-							display: { xs: 'flex', md: 'none' },
-							flexGrow: 1,
-							fontFamily: 'monospace',
-							fontWeight: 700,
-							letterSpacing: { xs: '0', sm: '.3rem' },
-							color: 'inherit',
-							textDecoration: 'none',
-						}}>
-						Cat Clothings
-					</Typography>
+					<Link to="/">
+						<Typography
+							variant="h5"
+							noWrap
+							component="a"
+							sx={{
+								display: { xs: 'flex', md: 'none' },
+								flexGrow: 1,
+								fontFamily: 'monospace',
+								fontWeight: 700,
+								letterSpacing: { xs: '0', sm: '.3rem' },
+								color: 'inherit',
+								textDecoration: 'none',
+							}}>
+							Cat Clothings
+						</Typography>
+					</Link>
 					{/* MENU */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{/* Productos > desplegables */}
@@ -152,7 +155,9 @@ const NavBar = () => {
 											<ListItemIcon>
 												<StarBorder sx={{ color: '#ffff' }} />
 											</ListItemIcon>
-											<ListItemText primary={subpage} />
+											<Link to={`/category/${subpage}`}>
+												<ListItemText primary={subpage} />
+											</Link>
 										</ListItemButton>
 									))}
 								</List>
