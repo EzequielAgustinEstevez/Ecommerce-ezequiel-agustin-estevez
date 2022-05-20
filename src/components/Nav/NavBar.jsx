@@ -25,8 +25,7 @@ import StarBorder from '@mui/icons-material/StarBorder';
 
 import CartWidget from './CartWidget';
 import { SearchImput } from './SearchImput';
-import { Link } from 'react-router-dom';
-import { Category } from '@mui/icons-material';
+import { Link, NavLink } from 'react-router-dom';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
 const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
@@ -62,11 +61,10 @@ const NavBar = () => {
 				<Toolbar disableGutters>
 					{/* LOGO responsive */}
 					<PetsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-					<Link to="/">
+					<Link to={'/'} style={{ textDecoration: 'none' }}>
 						<Typography
 							variant="h6"
 							noWrap
-							component="a"
 							sx={{
 								mr: 2,
 								display: { xs: 'none', md: 'flex' },
@@ -117,11 +115,10 @@ const NavBar = () => {
 					</Box>
 					{/* LOGO  */}
 					<PetsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-					<Link to="/">
+					<Link to={'/'} style={{ textDecoration: 'none' }}>
 						<Typography
 							variant="h5"
 							noWrap
-							component="a"
 							sx={{
 								display: { xs: 'flex', md: 'none' },
 								flexGrow: 1,
@@ -152,14 +149,19 @@ const NavBar = () => {
 										boxShadow: '10px 10px 10px rgba(0,0,0,0.1)',
 									}}>
 									{subpages.map((subpage) => (
-										<ListItemButton key={subpage} sx={{ pl: 4 }}>
-											<ListItemIcon>
-												<StarBorder sx={{ color: '#ffff' }} />
-											</ListItemIcon>
-											<Link to={`/category/${subpage}`}>
-												<ListItemText primary={subpage} />
-											</Link>
-										</ListItemButton>
+										<NavLink
+											key={subpage}
+											to={`/category/${subpage}`}
+											style={{ textDecoration: 'none' }}>
+											<Box display={'flex'}>
+												<ListItemButton sx={{ pl: 4 }}>
+													<ListItemIcon>
+														<StarBorder sx={{ color: '#ffff' }} />
+													</ListItemIcon>
+													<ListItemText primary={subpage} />
+												</ListItemButton>
+											</Box>
+										</NavLink>
 									))}
 								</List>
 							</Collapse>

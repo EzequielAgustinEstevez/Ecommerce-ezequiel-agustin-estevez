@@ -12,7 +12,7 @@ export default function Item(props) {
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			{/* IMAGEN */}
-			<Link to={`/Item/${props.id}`}>
+			<Link to={`/Item/${props.id}`} style={{ textDecoration: 'none' }}>
 				<CardMedia
 					component="img"
 					height="200px"
@@ -24,7 +24,7 @@ export default function Item(props) {
 			<CardContent>
 				{/* Titulo */}
 				<Typography gutterBottom variant="h5" component="div">
-					<Link to={`/Item/${props.id}`} underline="hover">
+					<Link to={`/Item/${props.id}`} style={{ textDecoration: 'none' }}>
 						{props.itemTitle}
 					</Link>
 				</Typography>
@@ -32,7 +32,7 @@ export default function Item(props) {
 				<Typography variant="body2" color="text.secondary">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
 					magnam tempore nihil minima porro in voluptatem eligendi adipisci.
-					<Link to={`/Item/${props.id}`}>
+					<Link to={`/Item/${props.id}`} style={{ textDecoration: 'none' }}>
 						<Button size="small">Leer Más</Button>
 					</Link>
 				</Typography>
