@@ -1,8 +1,10 @@
 import './App.css';
-import { NavBar } from './components/NavBar';
-import { ItemListContainer } from './components/ItemListContainer';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { NavBar } from './components/Nav/NavBar';
+import { ItemListContainer } from './components/Listado/ItemListContainer';
 import { EcommerceContex } from './context/GeneralContext';
+import { ItemDetailContainer } from './components/Detalle/ItemDetailContainer.jsx';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const theme = createTheme({
 	palette: {
@@ -23,8 +25,14 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<EcommerceContex>
-				<NavBar />
-				<ItemListContainer />
+				<BrowserRouter>
+					<NavBar />
+					<Routes>
+						<Route path="/" element={<ItemListContainer />} />
+						<Route path="*" element={'RUTA NO EXISTE 404'} />
+						<Route path="/Item/:id" element={<ItemDetailContainer />} />
+					</Routes>
+				</BrowserRouter>
 			</EcommerceContex>
 		</ThemeProvider>
 	);

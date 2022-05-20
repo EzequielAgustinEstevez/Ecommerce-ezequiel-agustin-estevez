@@ -1,3 +1,4 @@
+//@ts-check
 import React from 'react';
 import { Grid } from '@mui/material';
 import Item from './Item';
@@ -5,8 +6,6 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
 const ItemList = (props) => {
-	//! Contexto
-
 	return (
 		<>
 			{props.error && <h1>Error</h1>}
@@ -23,8 +22,9 @@ const ItemList = (props) => {
 				padding={2}
 				alignContent="center">
 				{props.data.map((data) => (
-					<Grid item key={data.name}>
+					<Grid item key={data.id}>
 						<Item
+							id={data.id}
 							itemTitle={data.name}
 							itemImage={data.image}
 							itemStock={data.stock}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GeneralContext } from '../context/GeneralContext';
+import { GeneralContext } from '../../context/GeneralContext';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Box } from '@mui/system';
@@ -10,7 +10,7 @@ function SearchImput() {
 	const onSearchValueChange = (event) => {
 		setSearchValue(event.target.value);
 	};
-
+	//!A ESTUDIAR
 	/* const StyledInputBase = styled(InputBase)(({ theme }) => ({
 		color: 'inherit',
 		'& .MuiInputBase-input': {
