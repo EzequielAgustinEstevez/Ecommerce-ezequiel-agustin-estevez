@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import CardMedia from '@mui/material/CardMedia';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import Api from '../../db/api';
+import Api from '../../db/Api';
 
 const ItemDetailContainer = (props) => {
 	const { itemId } = useParams();

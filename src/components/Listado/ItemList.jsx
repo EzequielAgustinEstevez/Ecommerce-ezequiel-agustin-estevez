@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { useParams } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
+import Api from '../../db/Api';
 const ItemList = (props) => {
 	var { categoryId } = useParams();
 	return (
@@ -16,16 +17,25 @@ const ItemList = (props) => {
 					<LinearProgress />
 				</Box>
 			) : (
-				<Box display="flex" justifyContent="center" alignItems="center">
-					<h1>
-						{categoryId ? (
-							categoryId
-						) : (
-							<div>
-								<HomeIcon /> Home
-							</div>
-						)}
-					</h1>
+				<Box
+					display="flex"
+					justifyContent="center"
+					alignItems="center"
+					flexDirection={'column'}>
+					<Box>
+						<h1>
+							{categoryId ? (
+								categoryId
+							) : (
+								<div>
+									<HomeIcon /> Home
+								</div>
+							)}
+						</h1>
+					</Box>
+					<Box>
+						<Api />
+					</Box>
 				</Box>
 			)}
 			<Grid
