@@ -26,6 +26,7 @@ import StarBorder from '@mui/icons-material/StarBorder';
 import CartWidget from './CartWidget';
 import { SearchImput } from './SearchImput';
 import { Link, NavLink } from 'react-router-dom';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
 const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
@@ -50,9 +51,11 @@ const NavBar = () => {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
-
+	const MenuProd = () => {
+		setOpen((prev) => !prev);
+	};
 	const handleClick = () => {
-		setOpen(!open);
+		setOpen(false);
 	};
 
 	return (
@@ -152,15 +155,18 @@ const NavBar = () => {
 										<NavLink
 											key={subpage}
 											to={`/category/${subpage}`}
-											style={{ textDecoration: 'none' }}>
-											<Box display={'flex'}>
-												<ListItemButton sx={{ pl: 4 }}>
-													<ListItemIcon>
-														<StarBorder sx={{ color: '#ffff' }} />
-													</ListItemIcon>
-													<ListItemText primary={subpage} />
-												</ListItemButton>
-											</Box>
+											style={{ textDecoration: 'none' }}
+											onClick={() => setOpen(true)}>
+											<ClickAwayListener onClickAway={() => MenuProd()}>
+												<Box display={'flex'}>
+													<ListItemButton sx={{ pl: 4 }}>
+														<ListItemIcon>
+															<StarBorder sx={{ color: '#ffff' }} />
+														</ListItemIcon>
+														<ListItemText primary={subpage} />
+													</ListItemButton>
+												</Box>
+											</ClickAwayListener>
 										</NavLink>
 									))}
 								</List>

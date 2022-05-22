@@ -22,15 +22,19 @@ const Footer = () => {
 				<Box></Box>
 			</Box>
 			<Box
-				paddingY={0.01}
 				sx={{ backgroundColor: '#4c4e42', color: '#fff' }}
 				textAlign={'center'}>
 				<p>
-					By{' '}
+					© 2022{' '}
 					<b>
-						<a href="https://ezequielestevez.com/">Ezequiel Estevez</a>
+						<a
+							href="https://ezequielestevez.com/"
+							target="_blank"
+							rel="noopener noreferrer">
+							Ezequiel Estevez
+						</a>
 					</b>{' '}
-					©
+					- Todos los derechos reservados
 				</p>
 			</Box>
 		</Box>
