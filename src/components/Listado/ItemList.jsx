@@ -10,7 +10,7 @@ import Api from '../../db/Api';
 const ItemList = (props) => {
 	var { categoryId } = useParams();
 	return (
-		<>
+		<Box minHeight={'100vh'}>
 			{props.error && <h1>Error</h1>}
 			{props.loading ? (
 				<Box sx={{ width: '100%' }}>
@@ -32,9 +32,6 @@ const ItemList = (props) => {
 								</div>
 							)}
 						</h1>
-					</Box>
-					<Box>
-						<Api />
 					</Box>
 				</Box>
 			)}
@@ -58,7 +55,7 @@ const ItemList = (props) => {
 					</Grid>
 				))}
 			</Grid>
-		</>
+		</Box>
 	);
 };
 

@@ -5,6 +5,7 @@ import { EcommerceContex } from './context/GeneralContext';
 import { ItemDetailContainer } from './components/Detalle/ItemDetailContainer.jsx';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Footer } from './components/Footer/Footer';
 
 const theme = createTheme({
 	palette: {
@@ -36,6 +37,7 @@ function App() {
 							element={<ItemListContainer />}
 						/>
 					</Routes>
+					<Footer />
 				</BrowserRouter>
 			</EcommerceContex>
 		</ThemeProvider>

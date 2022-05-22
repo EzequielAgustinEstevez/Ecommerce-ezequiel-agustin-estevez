@@ -10,16 +10,20 @@ const Api = () => {
 	const [url, setUrl] = useState('');
 
 	const urlApi = async () => {
-		const res = await axios('/images/search?category_ids=1');
+		const res = await axios(
+			'/images/search?category_ids=1&height="140"&width="140"'
+		);
 		console.log(res.data[0].url);
 		setUrl(res.data[0].url);
 	};
 
 	useEffect(() => {
-		urlApi();
+		return () => {
+			urlApi();
+		};
 	}, []);
 
-	return <CardMedia title="Gatitos" image={url} component="img" />;
+	return <CardMedia title="Gatitos" image={url} component="img" height="200" />;
 };
 
 export default Api;
