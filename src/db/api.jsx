@@ -13,7 +13,7 @@ const Api = () => {
 		const res = await axios(
 			'/images/search?category_ids=1&height="140"&width="140"'
 		);
-		console.log(res.data[0].url);
+		//console.log(res.data[0].url);
 		setUrl(res.data[0].url);
 	};
 

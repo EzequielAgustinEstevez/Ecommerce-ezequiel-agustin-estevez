@@ -96,7 +96,6 @@ function EcommerceContex(props) {
 				loading,
 				error,
 				products,
-				product,
 			}}>
 			{props.children}
 		</GeneralContext.Provider>
