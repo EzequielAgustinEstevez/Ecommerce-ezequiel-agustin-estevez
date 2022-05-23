@@ -10,6 +10,7 @@ const product = [
 		stock: 5,
 		initial: 1,
 		price: '2.000',
+		category: ['pantaloncito'],
 	},
 	{
 		id: 'prod2',
@@ -19,6 +20,7 @@ const product = [
 		stock: 10,
 		initial: 0,
 		price: '800',
+		category: ['gorrito'],
 	},
 	{
 		id: 'prod3',
@@ -28,6 +30,7 @@ const product = [
 		stock: 22,
 		initial: 0,
 		price: '1.500',
+		category: ['botitas'],
 	},
 	{
 		id: 'prod4',
@@ -37,6 +40,7 @@ const product = [
 		stock: 0,
 		initial: 0,
 		price: '5.000',
+		category: ['chalequito'],
 	},
 ];
 
@@ -80,7 +84,9 @@ function EcommerceContex(props) {
 	};
 
 	useEffect(() => {
-		fetchProductos();
+		return () => {
+			fetchProductos();
+		};
 		// eslint-disable-next-line
 	}, []);
 

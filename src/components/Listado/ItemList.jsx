@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { useParams } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
-import Api from '../../db/Api';
 const ItemList = (props) => {
 	var { categoryId } = useParams();
 	return (
