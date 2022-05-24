@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Tooltip } from '@mui/material';
 import { GeneralContext } from '../../context/GeneralContext';
+import { Link } from 'react-router-dom';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
 	'& .MuiBadge-badge': {
@@ -17,16 +18,18 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function CustomizedBadges() {
-	const { itemCarrito } = React.useContext(GeneralContext);
+	const { contadorCarrito } = React.useContext(GeneralContext);
 	return (
 		<Tooltip title="Tu Carrito">
-			<IconButton
-				aria-label="cart"
-				sx={{ margin: { xs: '0', sm: '0 0.8rem' } }}>
-				<StyledBadge badgeContent={itemCarrito} color="secondary">
-					<ShoppingCartIcon sx={{ color: '#fff' }} />
-				</StyledBadge>
-			</IconButton>
+			<Link to={'/cart'}>
+				<IconButton
+					aria-label="cart"
+					sx={{ margin: { xs: '0', sm: '0 0.8rem' } }}>
+					<StyledBadge badgeContent={contadorCarrito} color="secondary">
+						<ShoppingCartIcon sx={{ color: '#fff' }} />
+					</StyledBadge>
+				</IconButton>
+			</Link>
 		</Tooltip>
 	);
 }

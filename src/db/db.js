@@ -6,7 +6,7 @@ const product = [
 		stock: 5,
 		initial: 1,
 		price: '2.000',
-		category: 'pantaloncito',
+		category: 'pantaloncitos',
 	},
 	{
 		id: 'prod2',
@@ -15,7 +15,7 @@ const product = [
 		stock: 0,
 		initial: 0,
 		price: '800',
-		category: 'gorrito',
+		category: 'gorritos',
 	},
 	{
 		id: 'prod3',
@@ -24,7 +24,7 @@ const product = [
 		stock: 22,
 		initial: 1,
 		price: '1.500',
-		category: 'botitas',
+		category: 'botitass',
 	},
 	{
 		id: 'prod4',
@@ -33,7 +33,7 @@ const product = [
 		stock: 0,
 		initial: 0,
 		price: '2.200',
-		category: 'chalequito',
+		category: 'chalequitos',
 	},
 	{
 		id: 'prod5',
@@ -42,7 +42,7 @@ const product = [
 		stock: 4,
 		initial: 1,
 		price: '2.300',
-		category: 'pantaloncito',
+		category: 'pantaloncitos',
 	},
 	{
 		id: 'prod6',
@@ -51,7 +51,7 @@ const product = [
 		stock: 100,
 		initial: 1,
 		price: '3.800',
-		category: 'gorrito',
+		category: 'gorritos',
 	},
 	{
 		id: 'prod7',
@@ -69,7 +69,7 @@ const product = [
 		stock: 12,
 		initial: 1,
 		price: '3.000',
-		category: 'chalequito',
+		category: 'chalequitos',
 	},
 ];
 export default product;

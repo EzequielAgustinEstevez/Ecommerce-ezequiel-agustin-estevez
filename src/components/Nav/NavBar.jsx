@@ -29,7 +29,7 @@ import { Link, NavLink } from 'react-router-dom';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
-const subpages = ['Pantaloncito', 'Gorrito', 'Botitas', 'Chalequito'];
+const subpages = ['Pantaloncitos', 'Gorritos', 'Botitas', 'Chalequitos'];
 const settings = ['Avatar', 'Direccion', 'Historial', 'Cerrar Sesion'];
 
 const NavBar = () => {

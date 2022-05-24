@@ -5,7 +5,7 @@ const GeneralContext = React.createContext();
 
 function EcommerceContex(props) {
 	/* CONTADOR CARRITO */
-	const [itemCarrito, setitemCarrito] = useState(0);
+	const [contadorCarrito, setContadorCarrito] = useState(0);
 
 	/* BUSCADOR */
 	const [searchValue, setSearchValue] = React.useState('');
@@ -24,8 +24,8 @@ function EcommerceContex(props) {
 		<GeneralContext.Provider
 			/* ENVIOS */
 			value={{
-				itemCarrito,
-				setitemCarrito,
+				contadorCarrito,
+				setContadorCarrito,
 				searchValue,
 				setSearchValue,
 				searchedProducts,

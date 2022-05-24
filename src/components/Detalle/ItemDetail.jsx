@@ -9,11 +9,11 @@ import React, { useContext, useState } from 'react';
 import { GeneralContext } from '../../context/GeneralContext';
 
 const ItemDetail = (props) => {
-	const { itemCarrito, setitemCarrito } = useContext(GeneralContext);
+	const { contadorCarrito, setContadorCarrito } = useContext(GeneralContext);
 	const [tenemosItem, setTenemosItem] = useState(0);
 
 	const onAdd = (sumaCarrito) => {
-		setitemCarrito(sumaCarrito + itemCarrito);
+		setContadorCarrito(sumaCarrito + contadorCarrito);
 		setTenemosItem(tenemosItem + 1);
 	};
 
