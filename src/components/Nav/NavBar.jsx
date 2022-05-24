@@ -52,10 +52,10 @@ const NavBar = () => {
 		setAnchorElUser(null);
 	};
 	const MenuProd = () => {
-		setOpen((prev) => !prev);
+		setOpen(true);
 	};
 	const handleClick = () => {
-		setOpen(false);
+		setOpen((prev) => !prev);
 	};
 
 	return (
@@ -155,9 +155,8 @@ const NavBar = () => {
 										<NavLink
 											key={subpage}
 											to={`/category/${subpage.toLowerCase()}`}
-											style={{ textDecoration: 'none' }}
-											onClick={() => setOpen(true)}>
-											<ClickAwayListener onClickAway={() => MenuProd()}>
+											style={{ textDecoration: 'none' }}>
+											<ClickAwayListener onClickAway={MenuProd}>
 												<Box display={'flex'}>
 													<ListItemButton sx={{ pl: 4 }}>
 														<ListItemIcon>

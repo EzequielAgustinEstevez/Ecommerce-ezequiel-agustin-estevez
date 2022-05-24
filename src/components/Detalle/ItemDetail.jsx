@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 const ItemDetail = (props) => {
+	const onAdd = (sumaCarrito) => {};
 	return (
 		<Container>
 			<Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
@@ -37,10 +38,17 @@ const ItemDetail = (props) => {
 							nesciunt repellat deleniti ullam fugit recusandae, dicta
 							necessitatibus repellendus vero accusamus nobis magnam quia!
 						</Typography>
-						<ItemCount itemStock={props.stock} initial={props.initial} />
+						<ItemCount
+							itemStock={props.stock}
+							initial={props.initial}
+							onAdd={onAdd}
+						/>
 						<Box display={'flex'} justifyContent={'center'} paddingY={2}>
 							<Link to={'/cart'} style={{ textDecoration: 'none' }}>
-								<Button variant="contained" color="primary">
+								<Button
+									variant="contained"
+									color="primary"
+									disabled={props.stock === 0}>
 									<ShoppingBasketIcon />
 									<Typography paddingX={1}>Comprar</Typography>
 								</Button>

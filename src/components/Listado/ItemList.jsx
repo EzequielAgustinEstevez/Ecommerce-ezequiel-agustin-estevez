@@ -24,7 +24,9 @@ const ItemList = (props) => {
 					<Box>
 						<h1>
 							{categoryId ? (
-								categoryId
+								'Home / ' +
+								categoryId.charAt(0).toUpperCase() +
+								categoryId.slice(1)
 							) : (
 								<div>
 									<HomeIcon /> Home

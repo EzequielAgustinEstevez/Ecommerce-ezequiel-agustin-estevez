@@ -15,7 +15,7 @@ export default function Item(props) {
 			<Link to={`/item/${props.id}`} style={{ textDecoration: 'none' }}>
 				<CardMedia
 					component="img"
-					height="200px"
+					height="300px"
 					image={props.itemImage}
 					alt="cat"
 				/>
