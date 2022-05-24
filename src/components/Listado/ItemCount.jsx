@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { GeneralContext } from '../../context/GeneralContext';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CardActions from '@mui/material/CardActions';
 
 const ItemCount = (props) => {
-	const { itemCarrito, setitemCarrito } = React.useContext(GeneralContext);
 	const [itemCount, setItemCount] = useState(props.initial);
+
 	return (
 		<CardActions sx={{ justifyContent: 'space-between' }}>
 			<ButtonGroup variant="contained" color="primary">
@@ -24,6 +23,7 @@ const ItemCount = (props) => {
 					{itemCount}
 				</Typography>
 				{/* Boton Sumar */}
+
 				<Button
 					disabled={props.itemStock - 1 < itemCount}
 					onClick={() => setItemCount(itemCount + 1)}>
@@ -39,12 +39,12 @@ const ItemCount = (props) => {
 				noWrap>
 				Stock: {props.itemStock}
 			</Typography>
-			{/* Boton Comprar */}
+			{/* Boton Agregar */}
 			<Box display="flex" justifyContent="center" alignItems="center">
 				<Button
 					variant="contained"
 					onClick={() => {
-						setitemCarrito(itemCarrito + itemCount);
+						props.onAdd(itemCount);
 					}}
 					disabled={itemCount === 0}
 					size="small">

@@ -5,9 +5,18 @@ import CardMedia from '@mui/material/CardMedia';
 import { Container, Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import React, { useContext, useState } from 'react';
+import { GeneralContext } from '../../context/GeneralContext';
 
 const ItemDetail = (props) => {
-	const onAdd = (sumaCarrito) => {};
+	const { itemCarrito, setitemCarrito } = useContext(GeneralContext);
+	const [tenemosItem, setTenemosItem] = useState(0);
+
+	const onAdd = (sumaCarrito) => {
+		setitemCarrito(sumaCarrito + itemCarrito);
+		setTenemosItem(tenemosItem + 1);
+	};
+
 	return (
 		<Container>
 			<Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
@@ -44,15 +53,17 @@ const ItemDetail = (props) => {
 							onAdd={onAdd}
 						/>
 						<Box display={'flex'} justifyContent={'center'} paddingY={2}>
-							<Link to={'/cart'} style={{ textDecoration: 'none' }}>
-								<Button
-									variant="contained"
-									color="primary"
-									disabled={props.stock === 0}>
-									<ShoppingBasketIcon />
-									<Typography paddingX={1}>Comprar</Typography>
-								</Button>
-							</Link>
+							{tenemosItem > 0 && (
+								<Link to={'/cart'} style={{ textDecoration: 'none' }}>
+									<Button
+										variant="contained"
+										color="primary"
+										disabled={props.stock === 0}>
+										<ShoppingBasketIcon />
+										<Typography paddingX={1}>Comprar</Typography>
+									</Button>
+								</Link>
+							)}
 						</Box>
 					</Box>
 				</Box>

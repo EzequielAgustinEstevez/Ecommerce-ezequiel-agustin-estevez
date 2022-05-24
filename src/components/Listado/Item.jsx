@@ -7,8 +7,14 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { ItemCount } from './ItemCount';
+import { GeneralContext } from '../../context/GeneralContext';
 
 export default function Item(props) {
+	const { itemCarrito, setitemCarrito } = React.useContext(GeneralContext);
+
+	const onAdd = (sumaCarrito) => {
+		setitemCarrito(sumaCarrito + itemCarrito);
+	};
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			{/* IMAGEN */}
@@ -46,7 +52,11 @@ export default function Item(props) {
 				</Box>
 			</CardContent>
 			{/* ITEM COUNT */}
-			<ItemCount itemStock={props.itemStock} initial={props.initial} />
+			<ItemCount
+				itemStock={props.itemStock}
+				initial={props.initial}
+				onAdd={onAdd}
+			/>
 		</Card>
 	);
 }
