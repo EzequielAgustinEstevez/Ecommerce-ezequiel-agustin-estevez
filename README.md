@@ -2,9 +2,11 @@
 
 Proyecto realizado de la mano de CODERHOUSE gracias a Telecom Level UP
 
-## Ejecutar proyecto en local
+![Gif](https://github.com/EzequielAgustinEstevez/Ecommerce-ezequiel-agustin-estevez/blob/master/public/img/video-gif-readme.gif?raw=true)
 
-Clona mi proyecto
+## Ejecutar proyecto (http://localhost:3000/)
+
+Clona proyecto
 
 ```bash
   git clone https://github.com/EzequielAgustinEstevez/Ecommerce-ezequiel-agustin-estevez.git
@@ -34,12 +36,6 @@ En algunos casos tuve que instalar las fonts que utiliza el proyecto, si tienes 
 
 ```bash
   npm i roboto-font
-```
-
-También puede que te pida axios para utilizar las apis integradas
-
-```bash
-  npm install axios
 ```
 
 ## Tecnologias utilizadas
