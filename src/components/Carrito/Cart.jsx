@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
 	return (
-		<Container maxWidth="xs" sx={{ minHeight: '80vh' }}>
+		<Container maxWidth="xs" sx={{ minHeight: '90vh' }}>
 			<Typography
 				variant="h2"
 				color="initial"
