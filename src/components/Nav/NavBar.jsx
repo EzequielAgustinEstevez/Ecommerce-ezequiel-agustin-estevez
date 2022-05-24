@@ -29,7 +29,7 @@ import { Link, NavLink } from 'react-router-dom';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
-const subpages = ['Trajesitos', 'Botitas', 'Chalequitos'];
+const subpages = ['Pantaloncito', 'Gorrito', 'Botitas', 'Chalequito'];
 const settings = ['Avatar', 'Direccion', 'Historial', 'Cerrar Sesion'];
 
 const NavBar = () => {
@@ -154,7 +154,7 @@ const NavBar = () => {
 									{subpages.map((subpage) => (
 										<NavLink
 											key={subpage}
-											to={`/category/${subpage}`}
+											to={`/category/${subpage.toLowerCase()}`}
 											style={{ textDecoration: 'none' }}
 											onClick={() => setOpen(true)}>
 											<ClickAwayListener onClickAway={() => MenuProd()}>

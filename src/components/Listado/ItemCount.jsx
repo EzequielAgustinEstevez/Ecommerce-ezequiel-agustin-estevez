@@ -49,7 +49,7 @@ const ItemCount = (props) => {
 					disabled={itemCount === 0}
 					size="small">
 					<AddShoppingCartRoundedIcon />
-					Comprar
+					Agregar
 				</Button>
 			</Box>
 		</CardActions>

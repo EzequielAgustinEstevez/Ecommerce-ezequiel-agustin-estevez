@@ -7,9 +7,9 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { useParams } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 const ItemList = (props) => {
-	var { categoryId } = useParams();
+	let { categoryId } = useParams();
 	return (
-		<Box minHeight={'100vh'}>
+		<Box minHeight={'80vh'}>
 			{props.error && <h1>Error</h1>}
 			{props.loading ? (
 				<Box sx={{ width: '100%' }}>

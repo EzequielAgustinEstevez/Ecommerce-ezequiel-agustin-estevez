@@ -9,7 +9,7 @@ const Footer = () => {
 				paddingY={2}
 				display={'flex'}
 				justifyContent={'space-around'}
-				sx={{ backgroundColor: '#272822', color: '#fff' }}>
+				sx={{ backgroundColor: '#202124', color: '#fff' }}>
 				<Box></Box>
 				<Box
 					display={'flex'}
@@ -22,7 +22,7 @@ const Footer = () => {
 				<Box></Box>
 			</Box>
 			<Box
-				sx={{ backgroundColor: '#4c4e42', color: '#fff' }}
+				sx={{ backgroundColor: '#41444a', color: '#fff' }}
 				textAlign={'center'}>
 				<p>
 					© 2022{' '}
