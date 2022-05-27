@@ -9,19 +9,22 @@ import React, { useContext, useState } from 'react';
 import { GeneralContext } from '../../context/GeneralContext';
 
 const ItemDetail = (props) => {
-	const { contadorCarrito, setContadorCarrito } = useContext(GeneralContext);
-	const [tenemosItem, setTenemosItem] = useState(0);
+	const { agregarItem } = useContext(GeneralContext);
 
+	const [tenemosItem, setTenemosItem] = useState(0);
 	const onAdd = (sumaCarrito) => {
-		setContadorCarrito(sumaCarrito + contadorCarrito);
+		agregarItem(props.id, sumaCarrito);
+		/* Verifica que tengamos al menos 1 item para que el boton comprar aparezca */
 		setTenemosItem(tenemosItem + 1);
 	};
 
 	return (
 		<Container>
+			{/* Nombre */}
 			<Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
 				<h1>{props.name}</h1>
 			</Box>
+			{/* Imagen */}
 			<Box sx={{ p: 2, border: '1px dashed grey' }} margin={4}>
 				<Box display={'flex'} paddingY={3}>
 					<CardMedia
@@ -30,6 +33,7 @@ const ItemDetail = (props) => {
 						alt="cat"
 						sx={{ maxHeight: '30rem' }}
 					/>
+					{/* Descripcion */}
 					<Box
 						container
 						spacing={1}
@@ -47,12 +51,15 @@ const ItemDetail = (props) => {
 							nesciunt repellat deleniti ullam fugit recusandae, dicta
 							necessitatibus repellendus vero accusamus nobis magnam quia!
 						</Typography>
+						{/* CONTADOR - ItemCount */}
 						<ItemCount
 							itemStock={props.stock}
 							initial={props.initial}
 							onAdd={onAdd}
 						/>
+						{/* BOTON COMPRAR */}
 						<Box display={'flex'} justifyContent={'center'} paddingY={2}>
+							{/* //TODO corregir logica (al ser 0 no desaparece)  */}
 							{tenemosItem > 0 && (
 								<Link to={'/cart'} style={{ textDecoration: 'none' }}>
 									<Button

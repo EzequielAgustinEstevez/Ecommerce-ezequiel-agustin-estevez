@@ -27,6 +27,7 @@ import CartWidget from './CartWidget';
 import { SearchImput } from './SearchImput';
 import { Link, NavLink } from 'react-router-dom';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
+//import FirebaseDoc from '../../db/FirebaseDB';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
 const subpages = ['Pantaloncitos', 'Gorritos', 'Botitas', 'Chalequitos'];

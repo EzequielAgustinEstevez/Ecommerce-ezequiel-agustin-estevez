@@ -10,11 +10,10 @@ import { ItemCount } from './ItemCount';
 import { GeneralContext } from '../../context/GeneralContext';
 
 export default function Item(props) {
-	const { contadorCarrito, setContadorCarrito } =
-		React.useContext(GeneralContext);
+	const { agregarItem } = React.useContext(GeneralContext);
 
 	const onAdd = (sumaCarrito) => {
-		setContadorCarrito(sumaCarrito + contadorCarrito);
+		agregarItem(sumaCarrito);
 	};
 	return (
 		<Card sx={{ maxWidth: 345 }}>

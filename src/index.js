@@ -7,6 +7,17 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { initializeApp } from 'firebase/app';
+
+initializeApp({
+	apiKey: 'AIzaSyCALeLhd4XGPG-_O1qicYk-ILPV8Nb1bPU',
+	authDomain: 'ecommerce-telecom-coderhouse.firebaseapp.com',
+	projectId: 'ecommerce-telecom-coderhouse',
+	storageBucket: 'ecommerce-telecom-coderhouse.appspot.com',
+	messagingSenderId: '763589335307',
+	appId: '1:763589335307:web:9f5554c73e803c5125aa0e',
+	measurementId: 'G-CXPW3NRK7J',
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

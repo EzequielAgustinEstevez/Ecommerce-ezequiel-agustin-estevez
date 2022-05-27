@@ -40,6 +40,7 @@ const ItemDetailContainer = (props) => {
 					</Box>
 				) : (
 					<ItemDetail
+						id={products.id}
 						name={products.name}
 						image={products.image}
 						stock={products.stock}
