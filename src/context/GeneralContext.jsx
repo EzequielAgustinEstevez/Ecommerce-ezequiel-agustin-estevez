@@ -73,7 +73,7 @@ function EcommerceContex(props) {
 
 	/* _QUITAR ITEM */
 	const quitarItem = (idClikeado, cantidad) => {
-		if (cantidad === 1) {
+		if (cantidad <= 1) {
 			eliminarItem(idClikeado);
 
 			//! Puede que simplemente necesite un return para la implementacion
@@ -115,7 +115,9 @@ function EcommerceContex(props) {
 				searchedProducts,
 				agregarItem,
 				quitarItem,
+				eliminarItem,
 				eliminarTodosLosItems,
+				carrito,
 			}}>
 			{props.children}
 		</GeneralContext.Provider>

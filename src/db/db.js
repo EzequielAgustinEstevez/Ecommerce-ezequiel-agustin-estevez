@@ -5,7 +5,7 @@ const product = [
 		image: './../../img/pantaloncito-img.jpg',
 		stock: 5,
 		initial: 1,
-		price: '2.000',
+		price: '2000',
 		category: 'pantaloncitos',
 	},
 	{
@@ -23,7 +23,7 @@ const product = [
 		image: './../../img/botitas-img.jpg',
 		stock: 22,
 		initial: 1,
-		price: '1.500',
+		price: '1500',
 		category: 'botitass',
 	},
 	{
@@ -32,7 +32,7 @@ const product = [
 		image: './../../img/chalequito-img.jpg',
 		stock: 0,
 		initial: 0,
-		price: '2.200',
+		price: '2200',
 		category: 'chalequitos',
 	},
 	{
@@ -41,7 +41,7 @@ const product = [
 		image: './../../img/pantaloncito2-img.jpg',
 		stock: 4,
 		initial: 1,
-		price: '2.300',
+		price: '2300',
 		category: 'pantaloncitos',
 	},
 	{
@@ -50,7 +50,7 @@ const product = [
 		image: './../../img/gorrito2-img.jpg',
 		stock: 100,
 		initial: 1,
-		price: '3.800',
+		price: '3800',
 		category: 'gorritos',
 	},
 	{
@@ -59,7 +59,7 @@ const product = [
 		image: './../../img/botitas2-img.jpg',
 		stock: 4,
 		initial: 1,
-		price: '2.500',
+		price: '2500',
 		category: 'botitas',
 	},
 	{
@@ -68,7 +68,7 @@ const product = [
 		image: './../../img/chalequito2-img.jpg',
 		stock: 12,
 		initial: 1,
-		price: '3.000',
+		price: '3000',
 		category: 'chalequitos',
 	},
 ];
