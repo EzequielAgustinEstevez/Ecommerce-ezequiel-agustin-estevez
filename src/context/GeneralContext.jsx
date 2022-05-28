@@ -75,7 +75,8 @@ function EcommerceContex(props) {
 	const quitarItem = (idClikeado, cantidad) => {
 		if (cantidad === 1) {
 			eliminarItem(idClikeado);
-			//! Puede que simplemente necesite un return
+
+			//! Puede que simplemente necesite un return para la implementacion
 			console.log('Eliminado');
 		} else {
 			let nuevoCarrito = [];
