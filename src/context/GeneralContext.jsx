@@ -9,13 +9,13 @@ function EcommerceContex(props) {
 	const {
 		item: carrito,
 		saveItem,
-		// loading,
-		// error,
+		//loading,
+		//error,
 	} = useLocalStorage('CARRITO_V1', []);
 
 	/* -----CARRITO----- */
 
-	/* CONTADOR CARRITO */
+	/* _CONTADOR CARRITO */
 	const [contadorCarrito, setContadorCarrito] = useState(0);
 	const TotalEnCarrito = () => {
 		setContadorCarrito(
@@ -28,6 +28,7 @@ function EcommerceContex(props) {
 		TotalEnCarrito();
 	}, [carrito]);
 
+	/* _AGREGAR ITEM	 */
 	const agregarItem = (idClikeado, cantidad) => {
 		let nuevoItem = Product.find((producto) => producto.id === idClikeado);
 
@@ -57,6 +58,39 @@ function EcommerceContex(props) {
 			TotalEnCarrito();
 		}
 	};
+
+	/* _ELIMINAR TODOS LOS ITEMS */
+	const eliminarTodosLosItems = () => {
+		saveItem([]);
+	};
+
+	/* _ELIMINAR ITEM */
+	const eliminarItem = (id) => {
+		//* quitamos el item buscando por id con filter()
+		let nuevoCarrito = carrito.filter((item) => item.id !== id);
+		saveItem(nuevoCarrito);
+	};
+
+	/* _QUITAR ITEM */
+	const quitarItem = (idClikeado, cantidad) => {
+		if (cantidad === 1) {
+			eliminarItem(idClikeado);
+			//! Puede que simplemente necesite un return
+			console.log('Eliminado');
+		} else {
+			let nuevoCarrito = [];
+			nuevoCarrito = carrito.reduce((acc, item) => {
+				if (idClikeado === item.id) {
+					return acc.concat({ ...item, cantidad: item.cantidad - 1 });
+				} else {
+					return acc.concat(item);
+				}
+			}, []);
+			saveItem(nuevoCarrito);
+			console.log('Quitado');
+		}
+	};
+
 	/* BUSCADOR */
 	const [searchValue, setSearchValue] = React.useState('');
 	var searchedProducts = [];
@@ -79,6 +113,8 @@ function EcommerceContex(props) {
 				setSearchValue,
 				searchedProducts,
 				agregarItem,
+				quitarItem,
+				eliminarTodosLosItems,
 			}}>
 			{props.children}
 		</GeneralContext.Provider>
