@@ -76,7 +76,6 @@ function EcommerceContex(props) {
 		if (cantidad <= 1) {
 			eliminarItem(idClikeado);
 
-			//! Puede que simplemente necesite un return para la implementacion
 			console.log('Eliminado');
 		} else {
 			let nuevoCarrito = [];
@@ -90,6 +89,12 @@ function EcommerceContex(props) {
 			saveItem(nuevoCarrito);
 			console.log('Quitado');
 		}
+	};
+	/* _Total Compra */
+	const total = () => {
+		return carrito.reduce((acc, item) => {
+			return acc + item.price * item.cantidad;
+		}, 0);
 	};
 
 	/* BUSCADOR */
@@ -118,6 +123,7 @@ function EcommerceContex(props) {
 				eliminarItem,
 				eliminarTodosLosItems,
 				carrito,
+				total,
 			}}>
 			{props.children}
 		</GeneralContext.Provider>

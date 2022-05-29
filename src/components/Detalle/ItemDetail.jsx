@@ -67,7 +67,7 @@ const ItemDetail = (props) => {
 										color="primary"
 										disabled={props.stock === 0}>
 										<ShoppingBasketIcon />
-										<Typography paddingX={1}>Comprar</Typography>
+										<Typography paddingX={1}>Ir al Carrito</Typography>
 									</Button>
 								</Link>
 							)}

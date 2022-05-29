@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,7 +7,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Container, ButtonGroup, Button, Typography } from '@mui/material';
+import {
+	Container,
+	ButtonGroup,
+	Button,
+	Typography,
+	TextField,
+} from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Box } from '@mui/system';
 import { GeneralContext } from '../../context/GeneralContext';
@@ -18,7 +24,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
-		backgroundColor: theme.palette.common.black,
+		backgroundColor: '#3f8db5',
 		color: theme.palette.common.white,
 	},
 	[`&.${tableCellClasses.body}`]: {
@@ -44,7 +50,10 @@ function Cart() {
 		eliminarItem,
 		carrito: productos,
 		contadorCarrito,
+		total,
 	} = useContext(GeneralContext);
+
+	const [codigo, setCodigo] = useState('');
 
 	return (
 		<Container sx={{ minHeight: '100vh' }}>
@@ -56,14 +65,12 @@ function Cart() {
 							<TableHead>
 								<TableRow>
 									<StyledTableCell>Producto</StyledTableCell>
+									<StyledTableCell align="center">Precio</StyledTableCell>
+									<StyledTableCell align="center">Total</StyledTableCell>
+									<StyledTableCell align="center">Disponibles</StyledTableCell>
 									<StyledTableCell align="center">
-										Precio Unitario
+										Seleccionados
 									</StyledTableCell>
-									<StyledTableCell align="center">
-										Precio Acumulado
-									</StyledTableCell>
-									<StyledTableCell align="center">Stock</StyledTableCell>
-									<StyledTableCell align="center">Cantidad</StyledTableCell>
 								</TableRow>
 							</TableHead>
 							{/* Lista */}
@@ -126,8 +133,8 @@ function Cart() {
 					<Container sx={{ padding: '2rem 0' }}>
 						<Box
 							display="flex"
-							alignItems="center"
-							justifyContent="space-between">
+							justifyContent="space-between"
+							flexDirection={'row'}>
 							<Box>
 								<Typography variant="h6" color="initial">
 									Productos: {contadorCarrito}
@@ -136,29 +143,47 @@ function Cart() {
 							<Box>
 								<Typography variant="h6" color="initial">
 									Total: $
-									{productos.reduce((total, producto) => {
-										return total + producto.price * producto.cantidad;
-									}, 0)}
+									{codigo === 'GatitoFeliz'
+										? total() - total() * 0.15
+										: total()}
 								</Typography>
 							</Box>
-							<Box
-								display={'flex'}
-								alignContent="center"
-								justifyContent={'center'}>
-								<Button
-									onClick={() => eliminarTodosLosItems()}
-									variant="contained"
-									color="error">
-									<ClearIcon />
-									Eliminar carrito
-								</Button>
-							</Box>
 						</Box>
-						<Box display="flex" justifyContent="center" padding={5}>
-							<Button variant="contained" color="success">
-								<ShoppingCartIcon />
-								<Typography fontSize={27}>COMPRAR</Typography>
-							</Button>
+						<Box display="flex" justifyContent="space-between" paddingTop={3}>
+							<Box>
+								<TextField
+									id="outlined-helperText"
+									label="Ingrese su cupón"
+									defaultValue="GatitoFeliz"
+									helperText="GatitoFeliz dara 15%de descuento"
+									onKeyPress={(e) => {
+										if (e.key === 'Enter') {
+											setCodigo(e.target.value);
+										}
+									}}
+								/>
+							</Box>
+							<div>
+								<Box>
+									<Button variant="contained" color="success">
+										<ShoppingCartIcon />
+										<Typography fontSize={27}>COMPRAR</Typography>
+									</Button>
+								</Box>
+								<Box
+									display={'flex'}
+									alignContent="center"
+									justifyContent={'center'}
+									paddingTop={2}>
+									<Button
+										onClick={() => eliminarTodosLosItems()}
+										variant="contained"
+										color="error">
+										<ClearIcon />
+										Eliminar carrito
+									</Button>
+								</Box>
+							</div>
 						</Box>
 					</Container>
 				</Box>

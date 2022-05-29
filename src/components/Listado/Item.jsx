@@ -13,8 +13,9 @@ export default function Item(props) {
 	const { agregarItem } = React.useContext(GeneralContext);
 
 	const onAdd = (sumaCarrito) => {
-		agregarItem(sumaCarrito);
+		agregarItem(props.id, sumaCarrito);
 	};
+
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			{/* IMAGEN */}

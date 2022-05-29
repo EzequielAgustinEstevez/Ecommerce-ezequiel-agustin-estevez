@@ -75,10 +75,10 @@ const NavBar = () => {
 								fontFamily: 'monospace',
 								fontWeight: 700,
 								letterSpacing: '.2rem',
-								color: 'inherit',
+								color: 'white',
 								textDecoration: 'none',
 							}}>
-							Cat Clothings
+							Cat Clothes
 						</Typography>
 					</Link>
 					{/* MENU RESPONSIVE LOGO */}
@@ -136,7 +136,10 @@ const NavBar = () => {
 						</Typography>
 					</Link>
 					{/* MENU */}
-					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+					<Box
+						sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
+						justifyContent={'center'}
+						alignItems={'center'}>
 						{/* Productos > desplegables */}
 						<List component="nav" aria-labelledby="nested-list-subheader">
 							<ListItemButton onClick={handleClick}>
