@@ -30,7 +30,6 @@ function App() {
 				<BrowserRouter>
 					<NavBar />
 					<Routes>
-						<Route path="/*" element={'RUTA NO EXISTE 404'} />
 						<Route path="/" element={<ItemListContainer />} />
 						<Route
 							path="/category/:categoryId"
@@ -38,6 +37,7 @@ function App() {
 						/>
 						<Route path="/item/:itemId" element={<ItemDetailContainer />} />
 						<Route path="/cart" element={<Cart />} />
+						<Route path="/*" element={'RUTA NO EXISTE 404'} />
 					</Routes>
 					<Footer />
 				</BrowserRouter>

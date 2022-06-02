@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+//import Product from '../db/db';
 import { useLocalStorage } from './useLocalStorage';
-import Product from '../db/db';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 const GeneralContext = React.createContext();
 
@@ -24,7 +26,18 @@ function EcommerceContex(props) {
 			}, 0)
 		);
 	};
+
+	const [Product, setProduct] = useState([]);
 	useEffect(() => {
+		const db = getFirestore();
+		const getProduct = collection(db, 'productos');
+		getDocs(getProduct)
+			.then((snapshot) => {
+				setProduct(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 		TotalEnCarrito();
 	}, [carrito]);
 
@@ -75,8 +88,6 @@ function EcommerceContex(props) {
 	const quitarItem = (idClikeado, cantidad) => {
 		if (cantidad <= 1) {
 			eliminarItem(idClikeado);
-
-			console.log('Eliminado');
 		} else {
 			let nuevoCarrito = [];
 			nuevoCarrito = carrito.reduce((acc, item) => {
@@ -87,7 +98,6 @@ function EcommerceContex(props) {
 				}
 			}, []);
 			saveItem(nuevoCarrito);
-			console.log('Quitado');
 		}
 	};
 	/* _Total Compra */

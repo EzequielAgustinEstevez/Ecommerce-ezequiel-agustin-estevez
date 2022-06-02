@@ -1,12 +1,13 @@
 //@ts-check
-import React from 'react';
+
 import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
+import { GeneralContext } from '../../context/GeneralContext';
 import IconButton from '@mui/material/IconButton';
+import { Link } from 'react-router-dom';
+import React from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Tooltip } from '@mui/material';
-import { GeneralContext } from '../../context/GeneralContext';
-import { Link } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
 	'& .MuiBadge-badge': {

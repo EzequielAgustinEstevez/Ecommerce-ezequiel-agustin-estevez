@@ -1,11 +1,13 @@
 //@ts-check
-import React from 'react';
-import { Grid } from '@mui/material';
-import Item from './Item';
+
 import Box from '@mui/material/Box';
-import LinearProgress from '@mui/material/LinearProgress';
-import { useParams } from 'react-router-dom';
+import { Grid } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
+import Item from './Item';
+import LinearProgress from '@mui/material/LinearProgress';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
 const ItemList = (props) => {
 	let { categoryId } = useParams();
 	return (
@@ -49,9 +51,9 @@ const ItemList = (props) => {
 							id={data.id}
 							itemTitle={data.name}
 							itemImage={data.image}
-							itemStock={data.stock}
-							initial={data.initial}
-							price={data.price}
+							itemStock={Number(data.stock)}
+							initial={Number(data.initial)}
+							price={Number(data.price)}
 						/>
 					</Grid>
 				))}

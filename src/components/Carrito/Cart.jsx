@@ -1,26 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { styled } from '@mui/material/styles';
+import {
+	Button,
+	ButtonGroup,
+	Container,
+	TextField,
+	Typography,
+} from '@mui/material';
+import React, { useContext, useState } from 'react';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box } from '@mui/system';
+import ClearIcon from '@mui/icons-material/Clear';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { GeneralContext } from '../../context/GeneralContext';
+import { Link } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import {
-	Container,
-	ButtonGroup,
-	Button,
-	Typography,
-	TextField,
-} from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
-import { Box } from '@mui/system';
-import { GeneralContext } from '../../context/GeneralContext';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { styled } from '@mui/material/styles';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {

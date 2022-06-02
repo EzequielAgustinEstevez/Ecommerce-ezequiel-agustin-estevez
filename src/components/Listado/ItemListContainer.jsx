@@ -1,10 +1,16 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { ItemList } from './ItemList';
-import { GeneralContext } from '../../context/GeneralContext';
-import product from '../../db/db';
-import { useParams } from 'react-router-dom';
+import { LinearProgress } from '@mui/material';
 import Box from '@mui/material/Box';
-import LinearProgress from '@mui/material/LinearProgress';
+import {
+	collection,
+	getDocs,
+	getFirestore,
+	query,
+	where,
+} from 'firebase/firestore';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { GeneralContext } from '../../context/GeneralContext';
+import { ItemList } from './ItemList';
 
 const ItemListContainer = () => {
 	const { categoryId } = useParams();
@@ -15,43 +21,42 @@ const ItemListContainer = () => {
 	const [error, setError] = useState(false);
 	const [products, setProducts] = useState([]);
 
-	/* _BASE DE DATOS  */
-	const productPromise = new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(() => {
-				if (categoryId) {
-					return product.filter((producto) => producto.category === categoryId);
-				}
-				return product;
-			});
-		}, 2000);
-	});
-
 	useEffect(() => {
-		setLoading(true);
-		productPromise
-			.then((result) => {
-				setProducts(result);
-				setLoading(false);
+		//db
+		//productos
+		//QfBbs2ixVDAz89Jc5HAZ
+		const db = getFirestore();
+		let finalSearch;
+
+		//? si existe la categoria entonces solo trae esa categoria con query()
+		if (categoryId) {
+			finalSearch = query(
+				collection(db, 'productos'),
+				where('category', '==', categoryId)
+			);
+		} else {
+			finalSearch = collection(db, 'productos');
+		}
+		getDocs(finalSearch)
+			.then((snapshot) => {
+				setProducts(
+					snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+				);
 			})
 			.catch((err) => {
 				console.log(err);
 				setError(true);
-			});
+			})
+			.finally(() => setLoading(false));
 	}, [categoryId]);
+
 	return (
-		<Box sx={{ minHeight: '90vh' }}>
-			{loading ? (
-				<Box sx={{ width: '100%' }}>
-					<LinearProgress />
-				</Box>
-			) : (
-				<ItemList
-					data={!searchValue.length >= 1 ? products : searchedProducts}
-					error={error}
-					loading={loading}
-				/>
-			)}
+		<Box sx={{ minHeight: '100vh' }}>
+			<ItemList
+				data={!searchValue.length >= 1 ? products : searchedProducts}
+				error={error}
+				loading={loading}
+			/>
 		</Box>
 	);
 };

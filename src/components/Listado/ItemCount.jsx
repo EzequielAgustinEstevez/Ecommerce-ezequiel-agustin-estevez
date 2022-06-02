@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CardActions from '@mui/material/CardActions';
+import Typography from '@mui/material/Typography';
 
 const ItemCount = (props) => {
 	const [itemCount, setItemCount] = useState(props.initial);

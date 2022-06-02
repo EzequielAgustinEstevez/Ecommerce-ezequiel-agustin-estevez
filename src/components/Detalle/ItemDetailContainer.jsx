@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import LinearProgress from '@mui/material/LinearProgress';
+import React, { useEffect, useState } from 'react';
+
 import Box from '@mui/material/Box';
-import product from '../../db/db';
 import { ItemDetail } from './ItemDetail';
-import { useParams } from 'react-router-dom';
+import LinearProgress from '@mui/material/LinearProgress';
+import product from '../../db/db';
+import { Link, useParams } from 'react-router-dom';
+import {
+	collection,
+	getDoc,
+	getFirestore,
+	query,
+	where,
+	doc,
+} from 'firebase/firestore';
+import { Typography } from '@mui/material';
 
 const ItemDetailContainer = (props) => {
 	const { itemId } = useParams();
@@ -12,7 +22,7 @@ const ItemDetailContainer = (props) => {
 	const [loading, setLoading] = useState(true);
 	const [products, setProducts] = useState([]);
 
-	const idSearch = new Promise((resolve) => {
+	/* const idSearch = new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(product.find((producto) => producto.id === itemId));
 		}, 2000);
@@ -28,24 +38,58 @@ const ItemDetailContainer = (props) => {
 				setError(true);
 				console.log(err);
 			});
+	}, [itemId]); */
+
+	useEffect(() => {
+		//db
+		//productos
+		//QfBbs2ixVDAz89Jc5HAZ
+		const db = getFirestore();
+
+		const finalSearch = doc(db, 'productos', itemId);
+
+		getDoc(finalSearch)
+			.then((snapshot) => {
+				if (snapshot.exists()) {
+					setProducts({ id: snapshot.id, ...snapshot.data() });
+				} else {
+					setError(true);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+				setError(true);
+			})
+			.finally(() => setLoading(false));
 	}, [itemId]);
 
 	return (
 		<>
 			<Box sx={{ minHeight: '90vh' }}>
-				{error && <h1>Error</h1>}
 				{loading ? (
 					<Box sx={{ width: '100%' }}>
 						<LinearProgress />
 					</Box>
-				) : (
+				) : !error ? (
 					<ItemDetail
 						id={products.id}
 						name={products.name}
 						image={products.image}
-						stock={products.stock}
-						initial={products.initial}
+						stock={Number(products.stock)}
+						initial={Number(products.initial)}
 					/>
+				) : (
+					<Box>
+						<Typography align="center" p={3} variant="h5">
+							Este Producto no existe
+						</Typography>
+						<Typography align="center" variant="h6">
+							<Link to={'/'} style={{ textDecoration: 'none' }}>
+								{' '}
+								⬅️ Volver
+							</Link>
+						</Typography>
+					</Box>
 				)}
 			</Box>
 		</>

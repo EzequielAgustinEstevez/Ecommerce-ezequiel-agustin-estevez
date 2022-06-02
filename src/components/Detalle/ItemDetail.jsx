@@ -1,12 +1,13 @@
+import { Button, Container } from '@mui/material';
+import React, { useContext, useState } from 'react';
+
 import Box from '@mui/material/Box';
+import CardMedia from '@mui/material/CardMedia';
+import { GeneralContext } from '../../context/GeneralContext';
 import { ItemCount } from '../Listado/ItemCount';
 import { Link } from 'react-router-dom';
-import CardMedia from '@mui/material/CardMedia';
-import { Container, Button } from '@mui/material';
-import Typography from '@mui/material/Typography';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import React, { useContext, useState } from 'react';
-import { GeneralContext } from '../../context/GeneralContext';
+import Typography from '@mui/material/Typography';
 
 const ItemDetail = (props) => {
 	const { agregarItem } = useContext(GeneralContext);
@@ -59,7 +60,6 @@ const ItemDetail = (props) => {
 						/>
 						{/* BOTON COMPRAR */}
 						<Box display={'flex'} justifyContent={'center'} paddingY={2}>
-							{/* //TODO corregir logica (al ser 0 no desaparece)  */}
 							{tenemosItem > 0 && (
 								<Link to={'/cart'} style={{ textDecoration: 'none' }}>
 									<Button

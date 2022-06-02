@@ -1,19 +1,19 @@
-import React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
-import { ItemCount } from './ItemCount';
 import { GeneralContext } from '../../context/GeneralContext';
+import { ItemCount } from './ItemCount';
+import { Link } from 'react-router-dom';
+import React from 'react';
+import Typography from '@mui/material/Typography';
 
 export default function Item(props) {
 	const { agregarItem } = React.useContext(GeneralContext);
 
 	const onAdd = (sumaCarrito) => {
-		agregarItem(props.id, sumaCarrito);
+		agregarItem(props.id, Number(sumaCarrito));
 	};
 
 	return (

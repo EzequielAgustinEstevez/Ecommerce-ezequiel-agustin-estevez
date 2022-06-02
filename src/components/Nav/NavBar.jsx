@@ -1,32 +1,34 @@
 //@ts-check
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import MenuIcon from '@mui/icons-material/Menu';
-import PetsIcon from '@mui/icons-material/Pets';
 
+import * as React from 'react';
+
+import { Link, NavLink } from 'react-router-dom';
+
+import AppBar from '@mui/material/AppBar';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CartWidget from './CartWidget';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
+import Collapse from '@mui/material/Collapse';
+import Container from '@mui/material/Container';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Collapse from '@mui/material/Collapse';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
-
-import CartWidget from './CartWidget';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PetsIcon from '@mui/icons-material/Pets';
 import { SearchImput } from './SearchImput';
-import { Link, NavLink } from 'react-router-dom';
-import ClickAwayListener from '@mui/base/ClickAwayListener';
+import StarBorder from '@mui/icons-material/StarBorder';
+import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+
 //import FirebaseDoc from '../../db/FirebaseDB';
 
 const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];

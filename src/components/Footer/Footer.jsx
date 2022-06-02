@@ -1,7 +1,9 @@
 //@ts-check
-import React from 'react';
-import { Box } from '@mui/material';
+
 import Api from '../../db/Api';
+import { Box } from '@mui/material';
+import React from 'react';
+
 const Footer = () => {
 	return (
 		<Box display={'flex'} flexDirection={'column'}>
