@@ -1,8 +1,8 @@
-import { Box } from '@mui/system';
-import { GeneralContext } from '../../context/GeneralContext';
-import InputBase from '@mui/material/InputBase';
-import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
+import { Box } from '@mui/system';
+import React from 'react';
+import { GeneralContext } from '../../context/GeneralContext';
 
 function SearchImput() {
 	const { searchValue, setSearchValue } = React.useContext(GeneralContext);

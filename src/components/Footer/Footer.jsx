@@ -1,8 +1,8 @@
 //@ts-check
 
-import Api from '../../db/Api';
 import { Box } from '@mui/material';
 import React from 'react';
+import Api from '../../db/Api';
 
 const Footer = () => {
 	return (

@@ -1,33 +1,31 @@
 //@ts-check
 
-import * as React from 'react';
-
-import { Link, NavLink } from 'react-router-dom';
-
+import ClickAwayListener from '@mui/base/ClickAwayListener';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import MenuIcon from '@mui/icons-material/Menu';
+import PetsIcon from '@mui/icons-material/Pets';
+import StarBorder from '@mui/icons-material/StarBorder';
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import CartWidget from './CartWidget';
-import ClickAwayListener from '@mui/base/ClickAwayListener';
 import Collapse from '@mui/material/Collapse';
 import Container from '@mui/material/Container';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import PetsIcon from '@mui/icons-material/Pets';
-import { SearchImput } from './SearchImput';
-import StarBorder from '@mui/icons-material/StarBorder';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import * as React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import CartWidget from './CartWidget';
+import { SearchImput } from './SearchImput';
 
 //import FirebaseDoc from '../../db/FirebaseDB';
 

@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from 'react';
-
-import Box from '@mui/material/Box';
-import { ItemDetail } from './ItemDetail';
-import LinearProgress from '@mui/material/LinearProgress';
-import product from '../../db/db';
-import { Link, useParams } from 'react-router-dom';
-import {
-	collection,
-	getDoc,
-	getFirestore,
-	query,
-	where,
-	doc,
-} from 'firebase/firestore';
 import { Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { ItemDetail } from './ItemDetail';
 
 const ItemDetailContainer = (props) => {
 	const { itemId } = useParams();

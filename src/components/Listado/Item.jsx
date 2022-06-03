@@ -3,11 +3,11 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import { ItemCount } from './ItemCount';
-import { Link } from 'react-router-dom';
-import React from 'react';
-import Typography from '@mui/material/Typography';
 
 export default function Item(props) {
 	const { agregarItem } = React.useContext(GeneralContext);

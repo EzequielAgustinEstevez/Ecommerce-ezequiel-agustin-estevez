@@ -1,13 +1,12 @@
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Button, Container } from '@mui/material';
-import React, { useContext, useState } from 'react';
-
 import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import { ItemCount } from '../Listado/ItemCount';
-import { Link } from 'react-router-dom';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import Typography from '@mui/material/Typography';
 
 const ItemDetail = (props) => {
 	const { agregarItem } = useContext(GeneralContext);

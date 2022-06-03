@@ -1,8 +1,7 @@
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-
 //import Product from '../db/db';
 import { useLocalStorage } from './useLocalStorage';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 const GeneralContext = React.createContext();
 
