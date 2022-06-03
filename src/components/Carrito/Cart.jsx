@@ -1,27 +1,30 @@
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ClearIcon from '@mui/icons-material/Clear';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
 	Button,
 	ButtonGroup,
 	Container,
 	TextField,
 	Typography,
+	FormControl,
+	FormLabel,
+	FormGroup,
+	FormHelperText,
 } from '@mui/material';
-import React, { useContext, useState } from 'react';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box } from '@mui/system';
-import ClearIcon from '@mui/icons-material/Clear';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { GeneralContext } from '../../context/GeneralContext';
-import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { styled } from '@mui/material/styles';
+import { Box } from '@mui/system';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { GeneralContext } from '../../context/GeneralContext';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -60,6 +63,7 @@ function Cart() {
 		<Container sx={{ minHeight: '100vh' }}>
 			{productos.length > 0 ? (
 				<Box minHeight={'100vh'} p="5rem">
+					{/* Tabla */}
 					<TableContainer component={Paper}>
 						<Table aria-label="customized table">
 							{/* Cabecera */}
@@ -131,6 +135,9 @@ function Cart() {
 							</TableBody>
 						</Table>
 					</TableContainer>
+					{/* Formulario  https://react-hook-form.com*/}
+
+					{/* Contador y botones */}
 					<Container sx={{ padding: '2rem 0' }}>
 						<Box
 							display="flex"
