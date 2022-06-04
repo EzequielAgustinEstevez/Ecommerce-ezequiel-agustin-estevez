@@ -18,9 +18,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/system';
-import React, { useContext, useState } from 'react';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
+import FormCart from './FormCart/index';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -52,8 +54,31 @@ function Cart() {
 		contadorCarrito,
 		total,
 	} = useContext(GeneralContext);
+	const [registro, setRegistro] = useState([]);
 
-	const [codigo, setCodigo] = useState('');
+	const [orden, setOrden] = useState({});
+
+	const [saveOrder, setSaveOrder] = useState(false);
+	const RealizarCompra = () => {
+		setOrden({ buyer: registro, items: productos, total: total() });
+		setSaveOrder(true);
+	};
+
+	const [descuento, setDescuento] = useState('');
+
+	useEffect(() => {
+		if (saveOrder) {
+			const db = getFirestore();
+			const ordersCollection = collection(db, 'orders');
+			addDoc(ordersCollection, orden).then(({ id }) => {
+				setOrden(id);
+				alert(
+					`Orden N° ${id} realizada con exito. Pronto te contactaremos para realizar el envio. MUCHAS GRACIAS!`
+				);
+				eliminarTodosLosItems();
+			});
+		}
+	}, [saveOrder]);
 
 	return (
 		<Container sx={{ minHeight: '100vh' }}>
@@ -132,7 +157,9 @@ function Cart() {
 						</Table>
 					</TableContainer>
 					{/* Formulario  https://react-hook-form.com*/}
-
+					<Box p={4}>
+						<FormCart setRegistro={setRegistro} />
+					</Box>
 					{/* Contador y botones */}
 					<Container sx={{ padding: '2rem 0' }}>
 						<Box
@@ -147,7 +174,7 @@ function Cart() {
 							<Box>
 								<Typography variant="h6" color="initial">
 									Total: $
-									{codigo === 'GatitoFeliz'
+									{descuento === 'GatitoFeliz'
 										? total() - total() * 0.15
 										: total()}
 								</Typography>
@@ -162,14 +189,18 @@ function Cart() {
 									helperText="GatitoFeliz dara 15%de descuento"
 									onKeyPress={(e) => {
 										if (e.key === 'Enter') {
-											setCodigo(e.target.value);
+											setDescuento(e.target.value);
 										}
 									}}
 								/>
 							</Box>
 							<div>
 								<Box>
-									<Button variant="contained" color="success">
+									<Button
+										variant="contained"
+										color="success"
+										onClick={RealizarCompra}
+										disabled={total() === 0 || registro.length === 0}>
 										<ShoppingCartIcon />
 										<Typography fontSize={27}>COMPRAR</Typography>
 									</Button>
@@ -192,6 +223,7 @@ function Cart() {
 					</Container>
 				</Box>
 			) : (
+				/* Sin productos en el carrito */
 				<Box
 					display="flex"
 					justifyContent="center"
