@@ -1,6 +1,5 @@
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-//import Product from '../db/db';
 import { useLocalStorage } from './useLocalStorage';
 
 const GeneralContext = React.createContext();
@@ -14,18 +13,7 @@ function EcommerceContex(props) {
 		//error,
 	} = useLocalStorage('CARRITO_V1', []);
 
-	/* -----CARRITO----- */
-
-	/* _CONTADOR CARRITO */
-	const [contadorCarrito, setContadorCarrito] = useState(0);
-	const TotalEnCarrito = () => {
-		setContadorCarrito(
-			carrito.reduce((acc, item) => {
-				return (acc = acc + item.cantidad);
-			}, 0)
-		);
-	};
-
+	/* BASE DE DATOS FIREBASE */
 	const [Product, setProduct] = useState([]);
 	useEffect(() => {
 		const db = getFirestore();
@@ -40,13 +28,26 @@ function EcommerceContex(props) {
 		TotalEnCarrito();
 	}, [carrito]);
 
+	/* -----CARRITO----- */
+
+	/* _CONTADOR CARRITO */
+	const [contadorCarrito, setContadorCarrito] = useState(0);
+	const TotalEnCarrito = () => {
+		setContadorCarrito(
+			carrito.reduce((acc, item) => {
+				return (acc = acc + item.cantidad);
+			}, 0)
+		);
+	};
+
+	/* _BUSCAR EN CARRITO */
+	const BuscadorEnCarrito = (id) => {
+		return carrito.some((item) => item.id === id);
+	};
+
 	/* _AGREGAR ITEM	 */
 	const agregarItem = (idClikeado, cantidad) => {
 		let nuevoItem = Product.find((producto) => producto.id === idClikeado);
-
-		const BuscadorEnCarrito = (id) => {
-			return carrito.some((item) => item.id === id);
-		};
 
 		//TODO Optimizar codigo con "reduce"
 		const SumarItemEnCarrito = (id, nuevaCantidad) => {
@@ -71,19 +72,19 @@ function EcommerceContex(props) {
 		}
 	};
 
-	/* _ELIMINAR TODOS LOS ITEMS */
+	/* _ELIMINAR TODOS LOS ITEMS ->Eliminar Todos */
 	const eliminarTodosLosItems = () => {
 		saveItem([]);
 	};
 
-	/* _ELIMINAR ITEM */
+	/* _ELIMINAR ITEM ->Tacho */
 	const eliminarItem = (id) => {
 		//* quitamos el item buscando por id con filter()
 		let nuevoCarrito = carrito.filter((item) => item.id !== id);
 		saveItem(nuevoCarrito);
 	};
 
-	/* _QUITAR ITEM */
+	/* _RESTAR ITEM ->Restar 1 item del carrito*/
 	const quitarItem = (idClikeado, cantidad) => {
 		if (cantidad <= 1) {
 			eliminarItem(idClikeado);
@@ -133,6 +134,7 @@ function EcommerceContex(props) {
 				eliminarTodosLosItems,
 				carrito,
 				total,
+				BuscadorEnCarrito,
 			}}>
 			{props.children}
 		</GeneralContext.Provider>

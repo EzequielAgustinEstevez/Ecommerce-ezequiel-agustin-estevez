@@ -35,9 +35,8 @@ const ItemCount = (props) => {
 				sx={{ color: '#c3c3db' }}
 				variant="p"
 				color="initial"
-				align="inherit"
-				noWrap>
-				Stock: {props.itemStock}
+				align="center">
+				Stock: {props.itemSeleccionado}/{props.itemStock}
 			</Typography>
 			{/* Boton Agregar */}
 			<Box display="flex" justifyContent="center" alignItems="center">
@@ -46,7 +45,7 @@ const ItemCount = (props) => {
 					onClick={() => {
 						props.onAdd(itemCount);
 					}}
-					disabled={itemCount === 0}
+					disabled={itemCount === 0 || props.itemSeleccionado === 0}
 					size="small">
 					<AddShoppingCartRoundedIcon />
 					Agregar

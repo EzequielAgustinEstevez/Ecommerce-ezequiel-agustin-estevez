@@ -3,13 +3,14 @@ import { Button, Container } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import React, { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import { ItemCount } from '../Listado/ItemCount';
 
 const ItemDetail = (props) => {
-	const { agregarItem } = useContext(GeneralContext);
+	const { agregarItem, BuscadorEnCarrito, carrito } =
+		useContext(GeneralContext);
 
 	const [tenemosItem, setTenemosItem] = useState(0);
 	const onAdd = (sumaCarrito) => {
@@ -17,6 +18,18 @@ const ItemDetail = (props) => {
 		/* Verifica que tengamos al menos 1 item para que el boton comprar aparezca */
 		setTenemosItem(tenemosItem + 1);
 	};
+	const [itemSeleccionado, setItemSeleccionado] = useState(props.stock);
+	const seleccionados = () => {
+		if (BuscadorEnCarrito(props.id)) {
+			let itemSeleccionado = carrito.filter((item) => item.id === props.id);
+			setItemSeleccionado(
+				itemSeleccionado[0].stock - itemSeleccionado[0].cantidad
+			);
+		}
+	};
+	useEffect(() => {
+		return seleccionados();
+	}, [onAdd]);
 
 	return (
 		<Container>
@@ -56,6 +69,7 @@ const ItemDetail = (props) => {
 							itemStock={props.stock}
 							initial={props.initial}
 							onAdd={onAdd}
+							itemSeleccionado={itemSeleccionado}
 						/>
 						{/* BOTON COMPRAR */}
 						<Box display={'flex'} justifyContent={'center'} paddingY={2}>

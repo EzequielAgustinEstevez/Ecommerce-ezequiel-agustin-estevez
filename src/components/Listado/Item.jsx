@@ -4,17 +4,31 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import { ItemCount } from './ItemCount';
 
 export default function Item(props) {
-	const { agregarItem } = React.useContext(GeneralContext);
+	const { agregarItem, carrito, BuscadorEnCarrito } =
+		useContext(GeneralContext);
 
 	const onAdd = (sumaCarrito) => {
 		agregarItem(props.id, Number(sumaCarrito));
 	};
+
+	const [itemSeleccionado, setItemSeleccionado] = useState(props.itemStock);
+	const seleccionados = () => {
+		if (BuscadorEnCarrito(props.id)) {
+			let itemSeleccionado = carrito.filter((item) => item.id === props.id);
+			setItemSeleccionado(
+				itemSeleccionado[0].stock - itemSeleccionado[0].cantidad
+			);
+		}
+	};
+	useEffect(() => {
+		return seleccionados();
+	}, [onAdd]);
 
 	return (
 		<Card sx={{ maxWidth: 345 }}>
@@ -57,6 +71,7 @@ export default function Item(props) {
 				itemStock={props.itemStock}
 				initial={props.initial}
 				onAdd={onAdd}
+				itemSeleccionado={itemSeleccionado}
 			/>
 		</Card>
 	);
