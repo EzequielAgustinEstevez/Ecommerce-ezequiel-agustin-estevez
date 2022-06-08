@@ -29,6 +29,7 @@ function EcommerceContex(props) {
 	}, [carrito]);
 
 	/* -----CARRITO----- */
+	const [stockMaximo, setStockMaximo] = useState(false);
 
 	/* _CONTADOR CARRITO */
 	const [contadorCarrito, setContadorCarrito] = useState(0);
@@ -57,8 +58,9 @@ function EcommerceContex(props) {
 			if (itemASumar.cantidad + nuevaCantidad <= itemASumar.stock) {
 				itemASumar.cantidad += nuevaCantidad;
 				saveItem(nuevoCarrito);
+				setStockMaximo(false);
 			} else {
-				alert('Exedio el maximo de productos en Stock');
+				setStockMaximo(true);
 			}
 		};
 		/* //? Verifica si existe en el carrito para agregarlo o sumarle al existente */
@@ -135,6 +137,8 @@ function EcommerceContex(props) {
 				carrito,
 				total,
 				BuscadorEnCarrito,
+				stockMaximo,
+				setStockMaximo,
 			}}>
 			{props.children}
 		</GeneralContext.Provider>

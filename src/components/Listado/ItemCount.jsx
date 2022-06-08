@@ -5,6 +5,8 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 const ItemCount = (props) => {
 	const [itemCount, setItemCount] = useState(props.initial);

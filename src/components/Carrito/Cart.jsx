@@ -23,6 +23,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import FormCart from './FormCart/index';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -54,6 +56,9 @@ function Cart() {
 		contadorCarrito,
 		total,
 	} = useContext(GeneralContext);
+
+	const [orderSend, setOrderSend] = useState(false);
+
 	const [registro, setRegistro] = useState([]);
 
 	const [orden, setOrden] = useState({});
@@ -70,18 +75,28 @@ function Cart() {
 		if (saveOrder) {
 			const db = getFirestore();
 			const ordersCollection = collection(db, 'orders');
-			addDoc(ordersCollection, orden).then(({ id }) => {
-				setOrden(id);
-				alert(
-					`Orden N° ${id} realizada con exito. Pronto te contactaremos para realizar el envio. MUCHAS GRACIAS!`
-				);
-				eliminarTodosLosItems();
-			});
+			addDoc(ordersCollection, orden)
+				.then(({ id }) => {
+					setOrden(id);
+					setOrderSend(true);
+					eliminarTodosLosItems();
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		}
 	}, [saveOrder]);
 
 	return (
 		<Container sx={{ minHeight: '100vh' }}>
+			{/* Alert Exito */}
+			{orderSend && (
+				<Alert severity="success" sx={{ marginTop: '2rem' }}>
+					<AlertTitle>😺 Exito!</AlertTitle>
+					{`Orden N° ${orden} realizada con exito. Pronto te contactaremos para realizar el envio. MUCHAS GRACIAS!`}
+				</Alert>
+			)}
+			{/* IF Productos en carrito */}
 			{productos.length > 0 ? (
 				<Box minHeight={'100vh'} p="5rem">
 					{/* Tabla */}
@@ -223,7 +238,7 @@ function Cart() {
 					</Container>
 				</Box>
 			) : (
-				/* Sin productos en el carrito */
+				/* IF Sin productos en el carrito */
 				<Box
 					display="flex"
 					justifyContent="center"
