@@ -1,4 +1,8 @@
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
 import {
 	collection,
 	getDocs,
@@ -10,13 +14,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import { ItemList } from './ItemList';
-
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Button from '@mui/material/Button';
-import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 
 const ItemListContainer = () => {
 	const { categoryId } = useParams();

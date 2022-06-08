@@ -1,7 +1,11 @@
+import CloseIcon from '@mui/icons-material/Close';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Button, Container } from '@mui/material';
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -9,8 +13,13 @@ import { GeneralContext } from '../../context/GeneralContext';
 import { ItemCount } from '../Listado/ItemCount';
 
 const ItemDetail = (props) => {
-	const { agregarItem, BuscadorEnCarrito, carrito } =
-		useContext(GeneralContext);
+	const {
+		agregarItem,
+		BuscadorEnCarrito,
+		carrito,
+		stockMaximo,
+		setStockMaximo,
+	} = useContext(GeneralContext);
 
 	const [tenemosItem, setTenemosItem] = useState(0);
 	const onAdd = (sumaCarrito) => {
@@ -33,6 +42,28 @@ const ItemDetail = (props) => {
 
 	return (
 		<Container>
+			{stockMaximo && (
+				<Box sx={{ position: 'sticky', top: '0' }} justifyContent={'center'}>
+					<Collapse in={stockMaximo}>
+						<Alert
+							severity="warning"
+							action={
+								<IconButton
+									aria-label="close"
+									color="inherit"
+									size="small"
+									onClick={() => {
+										setStockMaximo(false);
+									}}>
+									<CloseIcon fontSize="inherit" />
+								</IconButton>
+							}
+							sx={{ mb: 2 }}>
+							Exedió el Stock máximo
+						</Alert>
+					</Collapse>
+				</Box>
+			)}
 			{/* Nombre */}
 			<Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
 				<h1>{props.name}</h1>

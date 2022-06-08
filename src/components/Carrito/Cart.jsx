@@ -9,6 +9,8 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -23,8 +25,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import FormCart from './FormCart/index';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -55,6 +55,7 @@ function Cart() {
 		carrito: productos,
 		contadorCarrito,
 		total,
+		setStockMaximo,
 	} = useContext(GeneralContext);
 
 	const [orderSend, setOrderSend] = useState(false);
@@ -85,6 +86,7 @@ function Cart() {
 					console.log(err);
 				});
 		}
+		setStockMaximo(false);
 	}, [saveOrder]);
 
 	return (

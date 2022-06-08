@@ -1,12 +1,12 @@
-import './App.css';
-import { NavBar } from './components/Nav/NavBar';
-import { ItemListContainer } from './components/Listado/ItemListContainer';
-import { EcommerceContex } from './context/GeneralContext';
-import { ItemDetailContainer } from './components/Detalle/ItemDetailContainer.jsx';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Footer } from './components/Footer/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
 import { Cart } from './components/Carrito/Cart';
+import { ItemDetailContainer } from './components/Detalle/ItemDetailContainer.jsx';
+import { Footer } from './components/Footer/Footer';
+import { ItemListContainer } from './components/Listado/ItemListContainer';
+import { NavBar } from './components/Nav/NavBar';
+import { EcommerceContex } from './context/GeneralContext';
 
 const theme = createTheme({
 	palette: {
