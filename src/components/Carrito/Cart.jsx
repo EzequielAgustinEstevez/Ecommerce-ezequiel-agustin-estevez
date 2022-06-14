@@ -20,7 +20,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/system';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import {
+	addDoc,
+	collection,
+	getFirestore,
+	Timestamp,
+} from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
@@ -66,7 +71,12 @@ function Cart() {
 
 	const [saveOrder, setSaveOrder] = useState(false);
 	const RealizarCompra = () => {
-		setOrden({ buyer: registro, items: productos, total: total() });
+		setOrden({
+			buyer: registro,
+			items: productos,
+			total: total(),
+			time: Timestamp.now(),
+		});
 		setSaveOrder(true);
 	};
 
