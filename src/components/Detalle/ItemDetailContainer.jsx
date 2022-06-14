@@ -1,8 +1,9 @@
-import { Typography } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Button, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ItemDetail } from './ItemDetail';
 
@@ -67,19 +68,28 @@ const ItemDetailContainer = (props) => {
 						name={products.name}
 						image={products.image}
 						stock={Number(products.stock)}
+						price={Number(products.price)}
 						initial={Number(products.initial)}
 					/>
 				) : (
-					<Box>
-						<Typography align="center" p={3} variant="h5">
-							Este Producto no existe
-						</Typography>
-						<Typography align="center" variant="h6">
-							<Link to={'/'} style={{ textDecoration: 'none' }}>
-								{' '}
-								⬅️ Volver
+					<Box
+						display={'flex'}
+						justifyContent={'center'}
+						flexDirection={'column'}
+						alignItems={'center'}>
+						<Box>
+							<Typography align="center" p={3} variant="h5">
+								Este producto no existe
+							</Typography>
+						</Box>
+						<Box p={3}>
+							<Link to="/" style={{ textDecoration: 'none' }}>
+								<Button variant="contained" color="primary">
+									<ArrowBackIcon />
+									<Typography fontSize={17}>Volver a la tienda</Typography>
+								</Button>
 							</Link>
-						</Typography>
+						</Box>
 					</Box>
 				)}
 			</Box>

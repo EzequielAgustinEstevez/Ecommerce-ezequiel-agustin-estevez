@@ -4,7 +4,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import Item from './Item';
 

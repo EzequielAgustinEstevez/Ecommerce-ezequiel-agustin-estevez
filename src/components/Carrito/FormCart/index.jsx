@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import React from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './styles.css';
 
@@ -9,9 +9,15 @@ export default function FormCart(props) {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-
+	const [emailverif, setEmaiVerif] = useState(false);
 	const onSubmit = (data) => {
-		props.setRegistro(data);
+		const { email, verificaionEmail } = data;
+		if (email !== verificaionEmail) {
+			setEmaiVerif(true);
+		} else {
+			setEmaiVerif(false);
+			props.setRegistro(data);
+		}
 	};
 
 	return (
@@ -51,6 +57,17 @@ export default function FormCart(props) {
 			/>
 			<Typography variant="caption" color={'error'} marginTop={0}>
 				{errors.email?.message}
+			</Typography>
+			<input
+				type="email"
+				placeholder="Verifica tu Email"
+				{...register('verificaionEmail', {
+					required: 'Ingresa tu correo nuevamente',
+					pattern: /^\S+@\S+$/i,
+				})}
+			/>
+			<Typography variant="caption" color={'error'} marginTop={0}>
+				{emailverif ? 'Los correos no coinciden' : ''}
 			</Typography>
 			{/* Teléfono */}
 			<input

@@ -95,6 +95,10 @@ const ItemDetail = (props) => {
 							nesciunt repellat deleniti ullam fugit recusandae, dicta
 							necessitatibus repellendus vero accusamus nobis magnam quia!
 						</Typography>
+						{/* Precio */}
+						<Typography variant="h4" align="center" padding={2}>
+							${props.price}
+						</Typography>
 						{/* CONTADOR - ItemCount */}
 						<ItemCount
 							itemStock={props.stock}

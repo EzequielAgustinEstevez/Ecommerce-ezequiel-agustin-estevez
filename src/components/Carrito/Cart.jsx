@@ -21,7 +21,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/system';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
 import FormCart from './FormCart/index';
@@ -173,7 +173,7 @@ function Cart() {
 							</TableBody>
 						</Table>
 					</TableContainer>
-					{/* Formulario  https://react-hook-form.com*/}
+					{/* Formulario */}
 					<Box p={4}>
 						<FormCart setRegistro={setRegistro} />
 					</Box>

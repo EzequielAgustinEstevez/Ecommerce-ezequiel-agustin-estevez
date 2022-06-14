@@ -1,7 +1,6 @@
 //@ts-check
 
 import { Box } from '@mui/material';
-import React from 'react';
 import Api from '../../db/Api';
 
 const Footer = () => {
