@@ -1,12 +1,30 @@
 # Ecommerce Ezequiel Agustin Estevez
 
-Proyecto realizado de la mano de CODERHOUSE gracias a Telecom Level UP
+Proyecto realizado de la mano de CODERHOUSE gracias a Telecom "Level UP"
+
+## Características
+
+- Buscador de productos
+- Categorías
+- Selección de productos y acumulador
+- Detalle de productos
+- Control de stock
+- Contador de productos en carrito
+- Carrito con detalle de productos, stock y editor
+- Formulario de registro con verificación
+- Descuentos por cupones
+- Alertas
+- Bases de datos Firebase
+
+## Demo
 
 ![Gif](https://github.com/EzequielAgustinEstevez/Ecommerce-ezequiel-agustin-estevez/blob/master/public/img/video-gif-readme.gif?raw=true)
 
-## Ejecutar proyecto (http://localhost:3000/)
+Live demo - https://ecommerce-telecom-coderhouse.web.app/
 
-Clona proyecto
+## Ejecutar proyecto en local (http://localhost:3000/)
+
+Clona mi proyecto
 
 ```bash
   git clone https://github.com/EzequielAgustinEstevez/Ecommerce-ezequiel-agustin-estevez.git
@@ -30,20 +48,24 @@ Ejecuta el servidor
   npm run start
 ```
 
-## Errores posibles
+## Tecnologías utilizadas
 
-En algunos casos tuve que instalar las fonts que utiliza el proyecto, si tienes este problema ingresa el siguiente comando
+React (create react app), React Router Dom, Material UI, Axios, React Hook Form
+
+## Librerías
+
+Axios - Se implementó con el objetivo de usar una librería nueva para mí, las ventajas en este proyecto seria que permite mayor compatibilidad con versiones antiguas de navegadores.
+
+React Hook Form - Se implementó con el objetivo de usar una librería nueva para mí, las ventajas en este proyecto sería la robustez en la verificación e integridad de datos enviados.
+
+### Errores posibles
+
+En algunos casos tuve que instalar las fuentes que utiliza el proyecto, si tienes este problema ingresa el siguiente comando
 
 ```bash
   npm i roboto-font
 ```
 
-## Tecnologias utilizadas
+## Autor
 
-**Client:** React (create react app), React Router Dom, Material UI (Typography, Icons-material)
-
-**Server:** Node, npm, Webpack, Axios (the CAT API)
-
-## Authors
-
-- [@Ezequiel Agustin Estevez](https://github.com/ezequielagustinestevez)
+- [@Ezequiel Agustin Estevez](https://github.com/ezequielagustinestevez) (Sitio web - [ezequielestevez.com](https://ezequielestevez.com))

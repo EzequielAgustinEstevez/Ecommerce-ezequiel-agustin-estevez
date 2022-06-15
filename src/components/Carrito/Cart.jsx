@@ -97,6 +97,7 @@ function Cart() {
 				});
 		}
 		setStockMaximo(false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [saveOrder]);
 
 	return (

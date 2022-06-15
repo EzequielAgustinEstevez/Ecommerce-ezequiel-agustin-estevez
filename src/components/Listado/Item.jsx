@@ -28,6 +28,7 @@ export default function Item(props) {
 	};
 	useEffect(() => {
 		return seleccionados();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [onAdd]);
 
 	return (

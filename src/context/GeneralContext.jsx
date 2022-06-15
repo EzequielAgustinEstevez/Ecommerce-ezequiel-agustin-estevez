@@ -26,6 +26,7 @@ function EcommerceContex(props) {
 				console.log(err);
 			});
 		TotalEnCarrito();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [carrito]);
 
 	/* -----CARRITO----- */
