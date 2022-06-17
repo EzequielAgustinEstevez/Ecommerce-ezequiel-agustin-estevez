@@ -29,9 +29,23 @@ import { SearchImput } from './SearchImput';
 
 //import FirebaseDoc from '../../db/FirebaseDB';
 
-const pages = ['Nuestra fabrica', 'Quienes somos?', 'Contacto'];
-const subpages = ['Pantaloncitos', 'Gorritos', 'Botitas', 'Chalequitos'];
-const settings = ['Avatar', 'Direccion', 'Historial', 'Cerrar Sesion'];
+const pages = [
+	{ name: 'Nuestra fabrica', slug: 'nuestra-fabrica' },
+	{ name: 'Quienes somos?', slug: 'quienes-somos' },
+	{ name: 'Contacto', slug: 'contacto' },
+];
+const subpages = [
+	{ name: 'Pantaloncitos', slug: 'pantaloncitos' },
+	{ name: 'Gorritos', slug: 'gorritos' },
+	{ name: 'Botitas', slug: 'botitas' },
+	{ name: 'Chalequitos', slug: 'chalequitos' },
+];
+const settings = [
+	{ name: 'Avatar', slug: 'avatar' },
+	{ name: 'Direccion', slug: 'direccion' },
+	{ name: 'Historial', slug: 'historial' },
+	{ name: 'Cerrar Sesion', slug: 'cerrar-sesion' },
+];
 
 const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -111,8 +125,8 @@ const NavBar = () => {
 								display: { xs: 'block', md: 'none' },
 							}}>
 							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">{page}</Typography>
+								<MenuItem key={page.slug} onClick={handleCloseNavMenu}>
+									<Typography textAlign="center">{page.name}</Typography>
 								</MenuItem>
 							))}
 						</Menu>
@@ -157,8 +171,8 @@ const NavBar = () => {
 									}}>
 									{subpages.map((subpage) => (
 										<NavLink
-											key={subpage}
-											to={`/category/${subpage.toLowerCase()}`}
+											key={subpage.slug}
+											to={`/category/${subpage.slug}`}
 											style={{ textDecoration: 'none' }}>
 											<ClickAwayListener onClickAway={MenuProd}>
 												<Box display={'flex'}>
@@ -166,7 +180,7 @@ const NavBar = () => {
 														<ListItemIcon>
 															<StarBorder sx={{ color: '#ffff' }} />
 														</ListItemIcon>
-														<ListItemText primary={subpage} />
+														<ListItemText primary={subpage.name} />
 													</ListItemButton>
 												</Box>
 											</ClickAwayListener>
@@ -178,10 +192,10 @@ const NavBar = () => {
 						{/* MENU ITEMS */}
 						{pages.map((page) => (
 							<Button
-								key={page}
+								key={page.slug}
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}>
-								{page}
+								{page.name}
 							</Button>
 						))}
 					</Box>
@@ -220,10 +234,10 @@ const NavBar = () => {
 							onClose={handleCloseUserMenu}>
 							{settings.map((setting) => (
 								<MenuItem
-									key={setting}
+									key={setting.slug}
 									onClick={handleCloseUserMenu}
 									sx={{ p: '0.3em 2em' }}>
-									<Typography textAlign="center">{setting}</Typography>
+									<Typography textAlign="center">{setting.name}</Typography>
 								</MenuItem>
 							))}
 						</Menu>

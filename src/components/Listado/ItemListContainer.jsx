@@ -43,9 +43,14 @@ const ItemListContainer = () => {
 		}
 		getDocs(finalSearch)
 			.then((snapshot) => {
-				setProducts(
-					snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-				);
+				if (snapshot.docs.length !== 0) {
+					setProducts(
+						snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+					);
+					setError(false);
+				} else {
+					setError(true);
+				}
 			})
 			.catch((err) => {
 				console.log(err);

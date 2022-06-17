@@ -1,40 +1,63 @@
 //@ts-check
 
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HomeIcon from '@mui/icons-material/Home';
-import { Grid } from '@mui/material';
+import { Button, capitalize, Grid, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Item from './Item';
 
 const ItemList = (props) => {
 	let { categoryId } = useParams();
 	return (
 		<Box minHeight={'80vh'}>
-			{props.error && <h1>Error</h1>}
 			{props.loading ? (
 				<Box sx={{ width: '100%' }}>
 					<LinearProgress />
 				</Box>
 			) : (
-				<Box
-					display="flex"
-					justifyContent="center"
-					alignItems="center"
-					flexDirection={'column'}>
-					<Box>
-						<h1>
-							{categoryId ? (
-								'Home / ' +
-								categoryId.charAt(0).toUpperCase() +
-								categoryId.slice(1)
-							) : (
-								<div>
-									<HomeIcon /> Home
-								</div>
-							)}
-						</h1>
-					</Box>
+				<Box>
+					{props.error ? (
+						<Box
+							display="flex"
+							justifyContent="center"
+							padding={5}
+							flexDirection="column"
+							alignItems={'center'}>
+							<Box>
+								<Typography variant="h6" color="initial">
+									Pagina no encontrada 404!
+								</Typography>
+							</Box>
+							<Box p={3}>
+								<Link to="/" style={{ textDecoration: 'none' }}>
+									<Button variant="contained" color="primary">
+										<ArrowBackIcon />
+										<Typography fontSize={17}>Volver a la tienda</Typography>
+									</Button>
+								</Link>
+							</Box>
+						</Box>
+					) : (
+						<Box
+							display="flex"
+							justifyContent="center"
+							alignItems="center"
+							flexDirection={'column'}>
+							<Box>
+								<h1>
+									{categoryId ? (
+										`Home / ${capitalize(categoryId)}`
+									) : (
+										<div>
+											<HomeIcon /> Home
+										</div>
+									)}
+								</h1>
+							</Box>
+						</Box>
+					)}
 				</Box>
 			)}
 			<Grid
