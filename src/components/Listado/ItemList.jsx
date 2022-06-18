@@ -27,7 +27,7 @@ const ItemList = (props) => {
 							alignItems={'center'}>
 							<Box>
 								<Typography variant="h6" color="initial">
-									Pagina no encontrada 404!
+									Categoría no encontrada!
 								</Typography>
 							</Box>
 							<Box p={3}>

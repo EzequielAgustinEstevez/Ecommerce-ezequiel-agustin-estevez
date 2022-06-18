@@ -20,15 +20,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/system';
-import {
-	addDoc,
-	collection,
-	getFirestore,
-	Timestamp,
-} from 'firebase/firestore';
+import { Timestamp } from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
+import { ordenDeCompra } from '../../db/FirebaseDbControl';
 import FormCart from './FormCart/index';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -63,13 +59,12 @@ function Cart() {
 		setStockMaximo,
 	} = useContext(GeneralContext);
 
-	const [orderSend, setOrderSend] = useState(false);
-
 	const [registro, setRegistro] = useState([]);
-
 	const [orden, setOrden] = useState({});
+	const [send, setSend] = useState(false);
+	const [numeroDeOrden, setNumeroDeOrden] = useState(0);
+	const [descuento, setDescuento] = useState('');
 
-	const [saveOrder, setSaveOrder] = useState(false);
 	const RealizarCompra = () => {
 		setOrden({
 			buyer: registro,
@@ -77,36 +72,32 @@ function Cart() {
 			total: total(),
 			time: Timestamp.now(),
 		});
-		setSaveOrder(true);
+		setSend(true);
 	};
 
-	const [descuento, setDescuento] = useState('');
+	const enviarOrden = async () => {
+		const ordenEnviada = await ordenDeCompra(orden);
+		if (ordenEnviada) {
+			setNumeroDeOrden(ordenEnviada);
+			setStockMaximo(false);
+			eliminarTodosLosItems();
+		}
+	};
 
 	useEffect(() => {
-		if (saveOrder) {
-			const db = getFirestore();
-			const ordersCollection = collection(db, 'orders');
-			addDoc(ordersCollection, orden)
-				.then(({ id }) => {
-					setOrden(id);
-					setOrderSend(true);
-					eliminarTodosLosItems();
-				})
-				.catch((err) => {
-					console.log(err);
-				});
+		if (send) {
+			enviarOrden();
 		}
-		setStockMaximo(false);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [saveOrder]);
+	}, [send]);
 
 	return (
 		<Container sx={{ minHeight: '100vh' }}>
 			{/* Alert Exito */}
-			{orderSend && (
+			{send && (
 				<Alert severity="success" sx={{ marginTop: '2rem' }}>
 					<AlertTitle>😺 Exito!</AlertTitle>
-					{`Orden N° ${orden} realizada con exito. Pronto te contactaremos para realizar el envio. MUCHAS GRACIAS!`}
+					{`Orden N° ${numeroDeOrden} realizada con exito. Pronto te contactaremos para realizar el envio. MUCHAS GRACIAS!`}
 				</Alert>
 			)}
 			{/* IF Productos en carrito */}

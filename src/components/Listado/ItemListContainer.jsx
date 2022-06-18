@@ -3,16 +3,10 @@ import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
-import {
-	collection,
-	getDocs,
-	getFirestore,
-	query,
-	where,
-} from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GeneralContext } from '../../context/GeneralContext';
+import { productosDB } from '../../db/FirebaseDbControl';
 import { ItemList } from './ItemList';
 
 const ItemListContainer = () => {
@@ -25,38 +19,20 @@ const ItemListContainer = () => {
 	const [error, setError] = useState(false);
 	const [products, setProducts] = useState([]);
 
-	useEffect(() => {
-		//db
-		//productos
-		//QfBbs2ixVDAz89Jc5HAZ
-		const db = getFirestore();
-		let finalSearch;
-
-		//? si existe la categoria entonces solo trae esa categoria con query()
-		if (categoryId) {
-			finalSearch = query(
-				collection(db, 'productos'),
-				where('category', '==', categoryId)
-			);
+	const productosDBCapturados = async () => {
+		setLoading(true);
+		const productosCapturados = await productosDB(categoryId);
+		setProducts(productosCapturados);
+		setLoading(false);
+		if (productosCapturados.length === 0) {
+			setError(true);
 		} else {
-			finalSearch = collection(db, 'productos');
+			setError(false);
 		}
-		getDocs(finalSearch)
-			.then((snapshot) => {
-				if (snapshot.docs.length !== 0) {
-					setProducts(
-						snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-					);
-					setError(false);
-				} else {
-					setError(true);
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-				setError(true);
-			})
-			.finally(() => setLoading(false));
+	};
+
+	useEffect(() => {
+		productosDBCapturados(categoryId);
 	}, [categoryId]);
 
 	return (
