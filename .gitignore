@@ -2,8 +2,8 @@
 
 #dev
 trash
-.vscode
-.firebase
+/.vscode
+/.firebase
 
 # dependencies
 /node_modules
