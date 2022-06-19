@@ -7,6 +7,7 @@ import { Footer } from './components/Footer/Footer';
 import { ItemListContainer } from './components/Listado/ItemListContainer';
 import { NavBar } from './components/Nav/NavBar';
 import { EcommerceContex } from './context/GeneralContext';
+import { Err404 } from './components/Error/404';
 
 const theme = createTheme({
 	palette: {
@@ -37,7 +38,7 @@ function App() {
 						/>
 						<Route path="/item/:itemId" element={<ItemDetailContainer />} />
 						<Route path="/cart" element={<Cart />} />
-						<Route path="/*" element={'RUTA NO EXISTE 404'} />
+						<Route path="/*" element={<Err404 />} />
 					</Routes>
 					<Footer />
 				</BrowserRouter>

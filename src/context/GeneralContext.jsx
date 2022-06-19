@@ -1,11 +1,10 @@
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage';
-
+import { productosDB } from '../db/FirebaseDbControl';
 const GeneralContext = React.createContext();
 
 function EcommerceContex(props) {
-	/* //? Hook personalzado para consumir LocalStorage */
 	const {
 		item: carrito,
 		saveItem,
@@ -15,16 +14,13 @@ function EcommerceContex(props) {
 
 	/* BASE DE DATOS FIREBASE */
 	const [Product, setProduct] = useState([]);
+
+	const producFB = async () => {
+		setProduct(await productosDB());
+	};
+
 	useEffect(() => {
-		const db = getFirestore();
-		const getProduct = collection(db, 'productos');
-		getDocs(getProduct)
-			.then((snapshot) => {
-				setProduct(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		producFB();
 		TotalEnCarrito();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [carrito]);
@@ -64,7 +60,6 @@ function EcommerceContex(props) {
 				setStockMaximo(true);
 			}
 		};
-		/* //? Verifica si existe en el carrito para agregarlo o sumarle al existente */
 		if (!BuscadorEnCarrito(idClikeado)) {
 			nuevoItem['cantidad'] = cantidad;
 			saveItem(carrito.concat(nuevoItem));
@@ -104,15 +99,20 @@ function EcommerceContex(props) {
 		}
 	};
 	/* _Total Compra */
-	const total = () => {
+	const total = (descuento) => {
 		return carrito.reduce((acc, item) => {
-			return acc + item.price * item.cantidad;
+			let total = acc + item.price * item.cantidad;
+			if (descuento === 'GatitoFeliz') {
+				return (total = total - total * 0.15);
+			} else {
+				return total;
+			}
 		}, 0);
 	};
 
 	/* BUSCADOR */
 	const [searchValue, setSearchValue] = React.useState('');
-	var searchedProducts = [];
+	let searchedProducts = [];
 	if (!searchValue.length >= 1) {
 		searchedProducts = Product;
 	} else {

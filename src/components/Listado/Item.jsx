@@ -32,7 +32,14 @@ export default function Item(props) {
 	}, [onAdd]);
 
 	return (
-		<Card sx={{ maxWidth: 345 }}>
+		<Card
+			sx={{
+				maxWidth: 345,
+				height: 560,
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-around',
+			}}>
 			{/* IMAGEN */}
 			<Link to={`/item/${props.id}`} style={{ textDecoration: 'none' }}>
 				<CardMedia
@@ -52,8 +59,7 @@ export default function Item(props) {
 				</Typography>
 				{/* Texto */}
 				<Typography variant="body2" color="text.secondary">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-					magnam tempore nihil minima porro in voluptatem eligendi adipisci.
+					{props.detaill}
 					<Link to={`/item/${props.id}`} style={{ textDecoration: 'none' }}>
 						<Button size="small">Leer Más</Button>
 					</Link>

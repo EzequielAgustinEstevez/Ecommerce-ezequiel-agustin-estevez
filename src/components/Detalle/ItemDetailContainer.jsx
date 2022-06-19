@@ -28,6 +28,7 @@ const ItemDetailContainer = (props) => {
 
 	useEffect(() => {
 		productosDBCapturados(itemId);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [itemId]);
 
 	return (
@@ -44,6 +45,7 @@ const ItemDetailContainer = (props) => {
 					stock={Number(products.stock)}
 					price={Number(products.price)}
 					initial={Number(products.initial)}
+					detaill={products.detaill}
 				/>
 			) : (
 				<Box

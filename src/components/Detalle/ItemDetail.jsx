@@ -24,7 +24,6 @@ const ItemDetail = (props) => {
 	const [tenemosItem, setTenemosItem] = useState(0);
 	const onAdd = (sumaCarrito) => {
 		agregarItem(props.id, sumaCarrito);
-		/* Verifica que tengamos al menos 1 item para que el boton comprar aparezca */
 		setTenemosItem(tenemosItem + 1);
 	};
 	const [itemSeleccionado, setItemSeleccionado] = useState(props.stock);
@@ -87,14 +86,7 @@ const ItemDetail = (props) => {
 						padding={2}
 						alignContent="center">
 						<Typography variant="body2" color="text.secondary">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Asperiores debitis deleniti, quasi nisi aliquid non culpa
-							voluptatum quos iste veniam aperiam quaerat iure ab. Illum animi
-							sequi modi sunt ut quisquams alias autem repellendus quaerat illum
-							voluptatibus, itaque facilis excepturi quia quam iure explicabo
-							cupiditate consequatur dicta temporibus. Quod aspernatur sed
-							nesciunt repellat deleniti ullam fugit recusandae, dicta
-							necessitatibus repellendus vero accusamus nobis magnam quia!
+							{props.detaill}
 						</Typography>
 						{/* Precio */}
 						<Typography variant="h4" align="center" padding={2}>

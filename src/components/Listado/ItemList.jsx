@@ -76,6 +76,7 @@ const ItemList = (props) => {
 							itemStock={Number(data.stock)}
 							initial={Number(data.initial)}
 							price={Number(data.price)}
+							detaill={data.detaill}
 						/>
 					</Grid>
 				))}

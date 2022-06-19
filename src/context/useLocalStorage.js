@@ -22,6 +22,7 @@ function useLocalStorage(itemName, initialValue) {
 		} catch (error) {
 			setError(error);
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	function saveItem(newItem) {

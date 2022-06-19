@@ -61,7 +61,6 @@ function Cart() {
 
 	const [registro, setRegistro] = useState([]);
 	const [orden, setOrden] = useState({});
-	const [send, setSend] = useState(false);
 	const [numeroDeOrden, setNumeroDeOrden] = useState(0);
 	const [descuento, setDescuento] = useState('');
 
@@ -69,38 +68,35 @@ function Cart() {
 		setOrden({
 			buyer: registro,
 			items: productos,
-			total: total(),
+			total: total(descuento),
 			time: Timestamp.now(),
 		});
-		setSend(true);
 	};
 
 	const enviarOrden = async () => {
 		const ordenEnviada = await ordenDeCompra(orden);
-		if (ordenEnviada) {
-			setNumeroDeOrden(ordenEnviada);
-			setStockMaximo(false);
-			eliminarTodosLosItems();
-		}
+		setNumeroDeOrden(ordenEnviada);
+		setStockMaximo(false);
+		eliminarTodosLosItems();
 	};
 
 	useEffect(() => {
-		if (send) {
+		if (Object.keys(orden).length !== 0) {
 			enviarOrden();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [send]);
+	}, [orden]);
 
 	return (
 		<Container sx={{ minHeight: '100vh' }}>
 			{/* Alert Exito */}
-			{send && (
+			{Object.keys(orden).length !== 0 && (
 				<Alert severity="success" sx={{ marginTop: '2rem' }}>
 					<AlertTitle>😺 Exito!</AlertTitle>
 					{`Orden N° ${numeroDeOrden} realizada con exito. Pronto te contactaremos para realizar el envio. MUCHAS GRACIAS!`}
 				</Alert>
 			)}
-			{/* IF Productos en carrito */}
+			{/*Productos en carrito */}
 			{productos.length > 0 ? (
 				<Box minHeight={'100vh'} p="5rem">
 					{/* Tabla */}
@@ -192,10 +188,7 @@ function Cart() {
 							</Box>
 							<Box>
 								<Typography variant="h6" color="initial">
-									Total: $
-									{descuento === 'GatitoFeliz'
-										? total() - total() * 0.15
-										: total()}
+									Total: ${total(descuento)}
 								</Typography>
 							</Box>
 						</Box>
@@ -219,7 +212,7 @@ function Cart() {
 										variant="contained"
 										color="success"
 										onClick={RealizarCompra}
-										disabled={total() === 0 || registro.length === 0}>
+										disabled={registro.length === 0}>
 										<ShoppingCartIcon />
 										<Typography fontSize={27}>COMPRAR</Typography>
 									</Button>
@@ -242,7 +235,7 @@ function Cart() {
 					</Container>
 				</Box>
 			) : (
-				/* IF Sin productos en el carrito */
+				/* Sin productos en el carrito */
 				<Box
 					display="flex"
 					justifyContent="center"

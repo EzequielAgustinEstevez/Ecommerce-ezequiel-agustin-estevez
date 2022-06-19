@@ -33,6 +33,7 @@ const ItemListContainer = () => {
 
 	useEffect(() => {
 		productosDBCapturados(categoryId);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [categoryId]);
 
 	return (
