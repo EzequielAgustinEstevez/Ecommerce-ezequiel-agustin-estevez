@@ -1,7 +1,6 @@
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { useLocalStorage } from './useLocalStorage';
 import { productosDB } from '../db/FirebaseDbControl';
+import { useLocalStorage } from './useLocalStorage';
 const GeneralContext = React.createContext();
 
 function EcommerceContex(props) {
