@@ -11,10 +11,16 @@ export const Err404 = () => {
 				display={'flex'}
 				justifyContent={'center'}
 				alignItems={'center'}
-				flexDirection={'column'}>
-				<p>Página no encontrada</p>
+				flexDirection={'column'}
+				p={3}>
+				<Typography variant="h6" color="initial">
+					Página no encontrada
+				</Typography>
+				<Typography variant="h4" color="initial">
+					Erro 404!
+				</Typography>
 				<Link to="/" style={{ textDecoration: 'none' }}>
-					<Button variant="contained" color="primary">
+					<Button variant="contained" color="primary" sx={{ marginTop: 2 }}>
 						<ArrowBackIcon />
 						<Typography fontSize={17}>Volver a la tienda</Typography>
 					</Button>
