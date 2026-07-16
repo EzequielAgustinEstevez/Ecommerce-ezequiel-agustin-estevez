@@ -1,25 +1,28 @@
 {
-  "data": {
-    "id": "popup-mock-001",
-    "title": "¡Nueva función disponible!",
-    "description": "Descubrí las últimas novedades de PersonalPay y aprovechá beneficios exclusivos para vos.",
-    "businessGroupCode": "PPAY_ENGAGEMENT",
-    "imageUrl": "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=600",
-    "illustration": "BellRinging",
-    "primaryAction": {
-      "text": "Ver ahora",
-      "url": "personalpay://home/promotions"
-    },
-    "secondaryAction": {
-      "text": "Más tarde",
-      "url": "personalpay://dismiss"
-    },
-    "campaign": "NEW_FEATURE_LAUNCH_2026",
-    "visualizationId": "viz-12345-abcde",
-    "displayType": "default",
-    "fullScreenType": "intrusive",
-    "style": "default",
-    "content": "balanced",
-    "animationType": "fade"
+  ":items": {
+    "root": {
+      ":items": {
+        "popupaem": {
+          ":type": "cms-personal-pay/components/popupAem",
+          "title": "¡Nueva función disponible!",
+          "descriptionText": "Descubrí las últimas novedades de PersonalPay y aprovechá beneficios exclusivos para vos.",
+          "imageUrl": "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=600",
+          "illustration": "BellRinging",
+          "displayType": "default",
+          "fullScreenType": "intrusive",
+          "style": "default",
+          "content": "balanced",
+          "animationType": "fade",
+          "primaryAction": {
+            "text": "Ver ahora",
+            "url": "personalpay://home/promotions"
+          },
+          "secondaryAction": {
+            "text": "Más tarde",
+            "url": "personalpay://dismiss"
+          }
+        }
+      }
+    }
   }
 }
