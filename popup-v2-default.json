@@ -3,47 +3,32 @@
     "root": {
       "columnCount": 12,
       "columnClassNames": {
-        "popupaem": "aem-GridColumn aem-GridColumn--default--12",
-        "row": "aem-GridColumn aem-GridColumn--default--12"
+        "popupaem": "aem-GridColumn aem-GridColumn--default--12"
       },
       "gridClassNames": "aem-Grid aem-Grid--12 aem-Grid--default--12",
       ":items": {
         "popupaem": {
-          "variantType": "imageType",
-          "title": "¡Sorpresa! Hoy duplicás 😉",
-          "descriptionText": "Solo por hoy: recargá tu línea Personal, duplicá tu crédito y sumá 20% de reintegro en tu primera recarga semanal",
-          "imageUrl": "/content/dam/cms-personal-pay/pruebas-popup/im-Popup-content-balanced.png",
+          "variantType": "ilustrationType",
+          "title": "🔥 Desafío encendido 🔥",
+          "descriptionText": "Paula, esta semana te podés ganar $10.000 para usar como quieras si ganás el desafío. ¡Dale! ¡No te quedes sin tu premio!",
+          "imageUrl": "/content/dam/cms-personal-pay/pruebas-popup/im-Illustration-content-offset.png",
           "displayType": "default",
           "illustration": "BadgeEmptyIllustration",
-          "style": "default",
-          "content": "balanced",
-          "animationType": "none",
+          "style": "sky",
+          "content": "offset",
+          "animationType": "fade",
           "environmentConfigService": {
             "previewPopupAemUrl": "/etc.clientlibs/cms-personal-pay/clientlibs/popup-promotion-preview/resources/popup-promotion-preview.html"
           },
           "primaryAction": {
-            "text": "Recargar ahora",
+            "text": "Participar ahora",
             "url": "/lvl"
           },
           ":type": "cms-personal-pay/components/popupAem"
-        },
-        "row": {
-          "variation": "pictogram",
-          "pictogramImage": "/content/dam/cms-personal-pay/2025-10-24 12 11 37.png",
-          "pictogramImageAltText": "alt text",
-          "title": "Title ",
-          "hasPill": false,
-          "backgroundColorSelector": "amber",
-          "backgroundColor": "#FDDD8A",
-          "backgroundTextColor": "black",
-          "link": "/promo",
-          "version": "1.0.0",
-          ":type": "cms-personal-pay/components/row"
         }
       },
       ":itemsOrder": [
-        "popupaem",
-        "row"
+        "popupaem"
       ],
       ":type": "cms-personal-pay/components/container"
     }
@@ -52,6 +37,6 @@
     "root"
   ],
   ":type": "cms-personal-pay/components/xfpage",
-  ":path": "/content/experience-fragments/cms-personal-pay/ar/es/App/popupaem/master",
+  ":path": "/content/experience-fragments/cms-personal-pay/ar/es/App/popupaem/popup-ilustracion-prueba",
   ":hierarchyType": "page"
 }
