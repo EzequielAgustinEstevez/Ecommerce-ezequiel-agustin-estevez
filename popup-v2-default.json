@@ -4,21 +4,20 @@
       ":items": {
         "popupaem": {
           ":type": "cms-personal-pay/components/popupAem",
-          "title": "¡Nueva función disponible!",
-          "descriptionText": "Descubrí las últimas novedades de PersonalPay y aprovechá beneficios exclusivos para vos.",
-          "imageUrl": "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=600",
-          "illustration": "BellRinging",
-          "displayType": "default",
+          "title": "¡Oferta especial!",
+          "descriptionText": "Aprovechá hasta 50% de descuento en tus servicios favoritos. Oferta válida por tiempo limitado.",
+          "imageUrl": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&h=1600",
+          "displayType": "fullScreen",
           "fullScreenType": "intrusive",
-          "style": "default",
+          "style": "pink",
           "content": "balanced",
-          "animationType": "fade",
+          "animationType": "slide",
           "primaryAction": {
-            "text": "Ver ahora",
-            "url": "personalpay://home/promotions"
+            "text": "Quiero mi descuento",
+            "url": "personalpay://promotions/special-offer"
           },
           "secondaryAction": {
-            "text": "Más tarde",
+            "text": "Ahora no",
             "url": "personalpay://dismiss"
           }
         }
