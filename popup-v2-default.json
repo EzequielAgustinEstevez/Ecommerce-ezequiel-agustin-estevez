@@ -2,33 +2,34 @@
   ":items": {
     "root": {
       "columnCount": 12,
-      "columnClassNames": {
-        "popupaem": "aem-GridColumn aem-GridColumn--default--12"
-      },
       "gridClassNames": "aem-Grid aem-Grid--12 aem-Grid--default--12",
+      "columnClassNames": {
+        "bannerlg": "aem-GridColumn aem-GridColumn--default--12"
+      },
       ":items": {
-        "popupaem": {
-          "variantType": "ilustrationType",
-          "title": "🔥 Desafío encendido 🔥",
-          "descriptionText": "Paula, esta semana te podés ganar $10.000 para usar como quieras si ganás el desafío. ¡Dale! ¡No te quedes sin tu premio!",
-          "imageUrl": "/content/dam/cms-personal-pay/pruebas-popup/im-Illustration-content-offset.png",
-          "displayType": "default",
-          "illustration": "BadgeEmptyIllustration",
-          "style": "sky",
-          "content": "offset",
-          "animationType": "fade",
-          "environmentConfigService": {
-            "previewPopupAemUrl": "/etc.clientlibs/cms-personal-pay/clientlibs/popup-promotion-preview/resources/popup-promotion-preview.html"
-          },
-          "primaryAction": {
-            "text": "Participar ahora",
-            "url": "/lvl"
-          },
-          ":type": "cms-personal-pay/components/popupAem"
+        "bannerlg": {
+          "variantType": "illustrationType",
+          "backgroundImage": "/content/dam/cms-personal-pay/in-app/IM_ALI_PERFU.png",
+          "altText": "Alt Text",
+          "contentSize": "sm",
+          "hasHeadline": true,
+          "headlineType": "text",
+          "headlineText": "Headline Text",
+          "title": "Title ",
+          "descriptionText": "Description",
+          "ctaText": "Button",
+          "ctaLink": "www.google.com",
+          "bannerBackgroundColor": "#721D63",
+          "styleType": "solid",
+          "labelColor": "purple",
+          "shapeType": "tag",
+          "position": "left",
+          "version": "1.0.0",
+          ":type": "cms-personal-pay/components/bannerLG"
         }
       },
       ":itemsOrder": [
-        "popupaem"
+        "bannerlg"
       ],
       ":type": "cms-personal-pay/components/container"
     }
@@ -37,6 +38,6 @@
     "root"
   ],
   ":type": "cms-personal-pay/components/xfpage",
-  ":path": "/content/experience-fragments/cms-personal-pay/ar/es/App/popupaem/popup-ilustracion-prueba",
-  ":hierarchyType": "page"
+  ":hierarchyType": "page",
+  ":path": "/content/experience-fragments/cms-personal-pay/ar/es/App/banner-lg/master"
 }
