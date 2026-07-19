@@ -9,34 +9,27 @@
       ":items": {
         "bannerlg": {
           "variantType": "illustrationType",
-          "backgroundImage": "/content/dam/cms-personal-pay/in-app/IM_ALI_PERFU.png",
-          "altText": "Alt Text",
+          "backgroundImage": "CashbackNeoIllustration",
+          "altText": "",
           "contentSize": "sm",
           "hasHeadline": true,
           "headlineType": "text",
           "headlineText": "Headline Text",
-          "title": "Title ",
+          "title": "Title",
           "descriptionText": "Description",
           "ctaText": "Button",
-          "ctaLink": "www.google.com",
-          "bannerBackgroundColor": "#721D63",
-          "styleType": "solid",
-          "labelColor": "purple",
-          "shapeType": "tag",
-          "position": "left",
+          "ctaLink": "myapp://seccion/destino",
+          "bannerBackgroundColor": "expressive.purple.300",
+          "backgroundTextColor": "",
           "version": "1.0.0",
           ":type": "cms-personal-pay/components/bannerLG"
         }
       },
-      ":itemsOrder": [
-        "bannerlg"
-      ],
+      ":itemsOrder": ["bannerlg"],
       ":type": "cms-personal-pay/components/container"
     }
   },
-  ":itemsOrder": [
-    "root"
-  ],
+  ":itemsOrder": ["root"],
   ":type": "cms-personal-pay/components/xfpage",
   ":hierarchyType": "page",
   ":path": "/content/experience-fragments/cms-personal-pay/ar/es/App/banner-lg/master"
